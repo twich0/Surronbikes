@@ -1,195 +1,218 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Taptap Send Payment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bike Store</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
-    font-family:Arial;
-    background:#f5f5f5;
-    padding:40px;
+background:#f4f4f4;
 }
-#timer{
-    color:blue;
-    font-size:28px;
-    font-weight:bold;
+
+header{
+background:#111;
+color:white;
+padding:20px;
+text-align:center;
 }
-.box{
-    background:white;
-    max-width:500px;
-    margin:auto;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+nav{
+background:#222;
+padding:15px;
+text-align:center;
 }
+
+nav a{
+color:white;
+text-decoration:none;
+margin:0 15px;
+font-weight:bold;
+}
+
+.hero{
+background:#0d6efd;
+color:white;
+padding:60px 20px;
+text-align:center;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+padding:40px 0;
+}
+
 h2{
-    text-align:center;
+margin-bottom:20px;
 }
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card h3{
+margin-bottom:10px;
+}
+
+.price{
+color:#0d6efd;
+font-size:22px;
+font-weight:bold;
+margin:10px 0;
+}
+
 button{
-    background:#28a745;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    font-size:16px;
-    border-radius:5px;
-    cursor:pointer;
-    width:100%;
-    margin-bottom:20px;
+background:#0d6efd;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:5px;
+cursor:pointer;
+width:100%;
 }
-.instructions{
-    line-height:1.7;
-    margin-top:20px;
+
+button:hover{
+background:#0b5ed7;
 }
-a.payment-link{
-    color:blue;
-    font-weight:bold;
-    text-decoration:underline;
+
+footer{
+background:#111;
+color:white;
+padding:20px;
+text-align:center;
+margin-top:50px;
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="box">
+<header>
+<h1>Bike World</h1>
+<p>Your One-Stop Bike Shop</p>
+</header>
 
-<h2>Complete Payment with TapTap Send</h2>
-<p>Via Debit card, Bank transfer and Apple Pay</p>
+<nav>
+<a href="#">Home</a>
+<a href="#categories">Categories</a>
+<a href="#mountain">Mountain</a>
+<a href="#road">Road</a>
+<a href="#electric">Electric</a>
+<a href="#kids">Kids</a>
+</nav>
 
-<p><strong>Order ID:</strong> <span id="orderID"></span></p>
+<section class="hero">
+<h2>Explore Every Ride</h2>
+<p>Find the perfect bike for every adventure.</p>
+</section>
 
-<button onclick="startPayment()">Pay Now</button>
+<div class="container">
 
-<div id="timerBox" style="display:none;">
-<p><strong>Payment Time Remaining</strong></p>
-<h3 id="timer">45:00</h3>
+<h2 id="categories">Bike Categories</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?w=800" alt="Mountain Bike">
+<div class="card-content">
+<h3>Mountain Bike</h3>
+<p>Designed for trails and rough terrain.</p>
+<div class="price">$850</div>
+<button>View Details</button>
+</div>
 </div>
 
-<!-- ✅ EMAIL BOX (ADDED) -->
-<div id="emailBox" style="display:none;margin-top:20px;">
-<h3>Send Proof of Payment</h3>
-<p>After completing payment, please send a screenshot or confirmation to our email:</p>
-<p>
-<a id="emailLink" href="#" target="_blank" class="payment-link">
-Send Payment Proof via Email
-</a>
-</p>
-<p style="font-size:14px;color:gray;">
-Once we receive it, your payment will be verified and confirmed.
-</p>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=800" alt="Road Bike">
+<div class="card-content">
+<h3>Road Bike</h3>
+<p>Lightweight for speed on paved roads.</p>
+<div class="price">$1,200</div>
+<button>View Details</button>
+</div>
 </div>
 
-<!-- ✅ INSTRUCTIONS (ADDED) -->
-<div class="instructions">
-<p><strong>Step 1:</strong> Open the TapTap Send app</p>
-<p><strong>Step 2:</strong> Search -Cameroon</p>
-<p><strong>Step 3:</strong> Enter the amount and tap <b>Next</b></p>
-<p><strong>Step 4:</strong> Add recipient</p>
-<p><strong>Step 5:</strong> Use MTN</p>
-<p><strong>Step 6:</strong> Choose payment option:</p>
-<ul>
-<li>Debit Card</li>
-<li>Bank Transfer</li>
-<li>Apple Pay</li>
-</ul>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=800" alt="Electric Bike">
+<div class="card-content">
+<h3>Electric Bike</h3>
+<p>Power-assisted riding with long battery life.</p>
+<div class="price">$2,300</div>
+<button>View Details</button>
+</div>
+</div>
 
-<p><strong>Recipient Details:</strong></p>
-<p>
-<b>Number:</b> 683459159<br>
-<b>Name:</b> JEANNETTE NGO
-</p>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800" alt="Kids Bike">
+<div class="card-content">
+<h3>Kids Bike</h3>
+<p>Safe and fun bikes for children.</p>
+<div class="price">$220</div>
+<button>View Details</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800" alt="BMX Bike">
+<div class="card-content">
+<h3>BMX Bike</h3>
+<p>Perfect for tricks and freestyle riding.</p>
+<div class="price">$550</div>
+<button>View Details</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?w=800" alt="Hybrid Bike">
+<div class="card-content">
+<h3>Hybrid Bike</h3>
+<p>Combines comfort and performance.</p>
+<div class="price">$780</div>
+<button>View Details</button>
+</div>
+</div>
 
 </div>
 
-<div id="statusBox" style="display:none;">
-<p><strong>Payment Status:</strong> 
-<span id="paymentStatus" style="color:orange;font-weight:bold;">
-Waiting confirmation...
-</span>
-</p>
 </div>
 
-</div>
-
-<script>
-// GET ORDER ID FROM URL OR GENERATE
-let params = new URLSearchParams(window.location.search);
-let orderID = params.get("order");
-
-if(!orderID){
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const randomLetter = letters.charAt(Math.floor(Math.random()*letters.length));
-    const number = Math.floor(100000 + Math.random()*900000);
-    orderID = "ORD-" + randomLetter + number;
-}
-
-document.getElementById("orderID").innerText = orderID;
-
-// PAY NOW BUTTON
-function startPayment(){
-
-    // open TapTap Send
-    window.open(
-      "https://apps.apple.com/cm/app/taptap-send-money-transfer/id1413346006?l=en-GB",
-      "_blank"
-    );
-
-    // show UI
-    document.getElementById("timerBox").style.display="block";
-    document.getElementById("emailBox").style.display="block";
-    document.getElementById("statusBox").style.display="block";
-
-    // email setup
-    const email = "blackbarcjewelry@gmail.com";
-    const subject = encodeURIComponent("Order Proof of Payment");
-    const body = encodeURIComponent(
-`Hello,
-
-I have completed the payment for Order ID: ${orderID}
-
-Please verify.
-
-Thank you.`
-    );
-
-    document.getElementById("emailLink").href =
-      `mailto:${email}?subject=${subject}&body=${body}`;
-
-    startTimer();
-}
-
-// TIMER
-function startTimer(){
-    let time = 2700;
-
-    let countdown = setInterval(function(){
-        let minutes = Math.floor(time/60);
-        let seconds = time % 60;
-
-        seconds = seconds < 10 ? "0"+seconds : seconds;
-
-        document.getElementById("timer").innerHTML =
-            minutes + ":" + seconds;
-
-        time--;
-
-        if(time < 0){
-            clearInterval(countdown);
-            document.getElementById("timer").innerHTML =
-                "Payment Window Expired";
-
-            document.getElementById("paymentStatus").innerText =
-                "Payment Expired";
-
-            document.getElementById("paymentStatus").style.color = "red";
-        }
-
-    },1000);
-}
-</script>
+<footer>
+<p>© 2026 Bike World. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
-
-
-Make this paragraph orange color and bold  “You may be asked to verify your identity/residence so please endeavor to do so”.
