@@ -22,19 +22,88 @@ background:#111;
 color:white;
 padding:20px;
 text-align:center;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:15px;
 }
 
-nav{
-background:#222;
-padding:15px;
-text-align:center;
+/* Wrapper to hold both Menu Button and Search Bar */
+.header-actions {
+display: flex;
+align-items: center;
+gap: 12px;
+width: 100%;
+max-width: 550px;
+justify-content: center;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-margin:0 15px;
-font-weight:bold;
+/* Menu Button Styling (Matching your image) */
+.menu-button {
+background: transparent;
+border: 2px solid #333;
+border-radius: 12px;
+width: 44px;
+height: 44px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: background 0.2s, border-color 0.2s;
+flex-shrink: 0;
+}
+
+.menu-button:hover {
+background: #222;
+border-color: #555;
+}
+
+.menu-button svg {
+width: 22px;
+height: 22px;
+fill: none;
+stroke: #8e8e93;
+stroke-width: 2.5;
+stroke-linecap: round;
+}
+
+/* Search Container Styling */
+.search-container {
+width:100%;
+display:flex;
+align-items:center;
+background:#ffffff;
+border-radius:24px;
+padding:8px 16px;
+box-shadow:0 2px 6px rgba(0,0,0,0.2);
+}
+
+.search-input {
+width:100%;
+border:none;
+background:transparent;
+outline:none;
+font-size:16px;
+color:#202124;
+padding-left:8px;
+}
+
+.search-button {
+background:none;
+border:none;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#5f6368;
+width: auto;
+padding: 0;
+}
+
+.search-button svg {
+width:20px;
+height:20px;
+fill:currentColor;
 }
 
 .hero{
@@ -94,7 +163,7 @@ font-weight:bold;
 margin:10px 0;
 }
 
-button{
+.card button{
 background:#0d6efd;
 color:white;
 border:none;
@@ -104,7 +173,7 @@ cursor:pointer;
 width:100%;
 }
 
-button:hover{
+.card button:hover{
 background:#0b5ed7;
 }
 
@@ -124,16 +193,29 @@ margin-top:50px;
 <header>
 <h1>Bike World</h1>
 <p>Your One-Stop Bike Shop</p>
-</header>
 
-<nav>
-<a href="#">Home</a>
-<a href="#categories">Categories</a>
-<a href="#mountain">Mountain</a>
-<a href="#road">Road</a>
-<a href="#electric">Electric</a>
-<a href="#kids">Kids</a>
-</nav>
+<!-- Header Actions Container -->
+<div class="header-actions">
+  <!-- Rounded Menu Button -->
+  <button class="menu-button" aria-label="Toggle menu">
+    <svg viewBox="0 0 24 24">
+      <line x1="4" y1="6" x2="20" y2="6"></line>
+      <line x1="4" y1="12" x2="20" y2="12"></line>
+      <line x1="4" y1="18" x2="20" y2="18"></line>
+    </svg>
+  </button>
+
+  <!-- Top Search Bar -->
+  <div class="search-container">
+    <button class="search-button" aria-label="Search">
+      <svg viewBox="0 0 24 24">
+        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+    </button>
+    <input type="text" class="search-input" placeholder="Search your product" aria-label="Search your product">
+  </div>
+</div>
+</header>
 
 <section class="hero">
 <h2>Explore Every Ride</h2>
