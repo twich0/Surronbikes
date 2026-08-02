@@ -363,8 +363,8 @@ margin-top:50px;
 <div class="card-content">
 <h3>Storm Bee</h3>
 <p>Full-size electric off-road motorcycle with maximum power.</p>
-<div class="price">$8,499</div>
-<button>View Details</button>
+<div class="price">$7,000.00 – $7,500.00</div>
+<button onclick="openModal('stormBeeModal')">View Details</button>
 </div>
 </div>
 
@@ -537,6 +537,120 @@ margin-top:50px;
 
     <h4 style="margin-top:20px;">IMPRESSIVE POWER-TO-WEIGHT RATIO</h4>
     <p style="margin-top:8px;">The SURRON LIGHT BEE X’s torquey center-placed motor and high power-to-weight ratio propel it to speeds of up to 75 km/h and up hills as steep as 45 degrees. Flip the switch to Sport mode and unleash the Light Bee X’s full capabilities.</p>
+  </div>
+</div>
+
+<!-- Storm Bee Details Modal -->
+<div class="modal-overlay" id="stormBeeModal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('stormBeeModal')">&times;</button>
+    
+    <div class="product-details-header">
+      <h2>SURRON STORM BEE</h2>
+      <p style="color:#777; font-size:14px; margin-top:4px;">Be the first to leave a review.</p>
+      <div class="product-price">$7,000.00 – $7,500.00</div>
+    </div>
+
+    <p>Surron have once again set the new benchmark for high-performance, electric off-road motorcycles. The SurRon Storm Bee will be available in three configurations: First, a competition MX version, followed by an enduro model and a road-legal version.</p>
+    <p style="margin-top:8px;">Benefitting from Surron’s proprietary powertrain and motorcycle design concept, the Storm Bee has an extremely high standard of performance. 0-50mph comes in only 3.6 seconds, due in part to the elimination of frequent gear shifting and clutch control.</p>
+
+    <div class="options-group" style="margin-top:20px;">
+      <label for="storm-model-select">MODEL:</label>
+      <select id="storm-model-select">
+        <option value="">Choose an option</option>
+        <option value="off-road">Off-Road</option>
+        <option value="road-legal">Road Legal</option>
+      </select>
+    </div>
+
+    <div class="options-group">
+      <label for="storm-qty">SURRON STORM BEE quantity:</label>
+      <input type="number" id="storm-qty" value="1" min="1" style="width:70px;">
+    </div>
+
+    <button class="btn-add-cart">Add To Cart</button>
+
+    <p style="margin-top:15px; font-size:14px; color:#555;">
+      <strong>Categories:</strong> Sur-ron Electric Bike
+    </p>
+
+    <div style="margin-top:10px; font-size:14px;">
+      <strong>Share:</strong> Share | Tweet | Pinterest | Email
+    </div>
+
+    <ul class="perks-list">
+      <li><strong>Money Back Guarantee:</strong> You have the right to return your orders within 30 days with no hassle.</li>
+      <li><strong>Cryptocurrency Discounts:</strong> Get 20% Discount OFF when you pay with any cryptocurrency.</li>
+      <li><strong>Free Shipping Within USA:</strong> USA customers only need to wait for 3-4 days for order to arrive.</li>
+    </ul>
+
+    <h3>Product Description</h3>
+    <p style="margin-top:8px;"><strong>SURRON STORM BEE ELECTRIC BIKE</strong></p>
+    <p style="margin-top:8px;">The SurRon Storm Bee comes standard with a multi-level, adjustable energy BERS (E-Brake Energy Return System) system to regenerate the battery during braking. Enjoy extra range and enjoy the ride without the anxiety.</p>
+    <p style="margin-top:8px;"><strong>ASR (Active Spin Reduction):</strong> The ASR traction control system was independently developed by Surron. With multiple levels of control and on-the-fly adjustability, the Storm Bee can adapt to a variety of road conditions for optimal grip and improved safety.</p>
+
+    <h4 style="margin-top:20px;">POWERFUL & INTELLIGENT</h4>
+    <p style="margin-top:8px;">SurRon Storm Bee is a power system with continuous output power of 5kW, including 5kW PMSM motor and 5kW FOC motor controller. The product can provide two rated voltage operating modes, 48V and 60V(Rated voltage expansion :48V/60V/72V/84V) which can be automatically adjusted according to the battery system. Due to the excellent heat dissipation structure design and multi-level temperature control strategy, the power system is able to make continuous stable large-scale power output under natural air cooling conditions, which has been applied to the SURRON light bee model with mass production.</p>
+
+    <h4 style="margin-top:20px;">KEY FEATURES OF THE STORM BEE F</h4>
+    <ul class="spec-list">
+      <li>Liquid-cooled, brushless electric motor</li>
+      <li>22.5 kW peak power, 520 Nm peak torque</li>
+      <li>Max. range: 120 km (75 miles) on a full charge @ 50 km/h (31 mph)</li>
+      <li>3 riding modes, traction control, regenerative braking</li>
+      <li>Turbo mode & reverse gear</li>
+      <li>Adjustable off-road suspension, 21/18” wheels (front/rear)</li>
+      <li>Quiet & emissions-free</li>
+      <li>Switchable headlight & number plate included (North American version only)</li>
+    </ul>
+
+    <h3 style="margin-top:20px;">TECHNICAL SPECIFICATIONS</h3>
+    
+    <p style="margin-top:10px;"><strong>POWERTRAIN</strong></p>
+    <ul class="spec-list">
+      <li><strong>Motor Type:</strong> Liquid-cooled, brushless electric (BLDC) motor</li>
+      <li><strong>Rated Voltage:</strong> 104V (DC)</li>
+      <li><strong>Rated Power/Peak Power:</strong> 10,000W / 22,500W</li>
+      <li><strong>Controller Type:</strong> FOC Sine Wave</li>
+      <li><strong>Peak Torque:</strong> 520 Nm (383 ft-lbs)</li>
+      <li><strong>Top Speed:</strong> 110 km/h (68 mph)</li>
+      <li><strong>Max Range:</strong> 120 km @ 50 km/h (75 miles @ 31 mph), depending upon terrain</li>
+      <li><strong>Battery:</strong> 104V/55Ah Lithium Ion</li>
+      <li><strong>Charger:</strong> 10A</li>
+      <li><strong>Charging Time:</strong> 4 Hours (0-100%)</li>
+      <li><strong>Drive:</strong> 530 O-ring Chain</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>RIDER AIDS</strong></p>
+    <ul class="spec-list">
+      <li><strong>Riding Modes:</strong> Sport, Rain, Eco, Turbo</li>
+      <li><strong>Rider Aids:</strong> ASR (Acceleration Slip Reduction, a.k.a. traction control), BERS (Brake Energy Regenerative System)</li>
+      <li><strong>Reverse Gear:</strong> Button-activated</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>CHASSIS</strong></p>
+    <ul class="spec-list">
+      <li><strong>Front Suspension:</strong> 47 mm inverted fork, 290 mm travel, adjustable compression & rebound</li>
+      <li><strong>Rear:</strong> Fully adjustable monoshock, 290 mm wheel travel</li>
+      <li><strong>Front Wheel:</strong> 21″ wire-spoked rim, 80/100-21 off-road tire</li>
+      <li><strong>Rear Wheel:</strong> 18″ wire-spoked rim, 100/90-18 off-road tire</li>
+      <li><strong>Curb Weight:</strong> 127 kg (280 lbs)</li>
+      <li><strong>Max Load:</strong> 100 kg (220 lbs)</li>
+      <li><strong>Vehicle Dimensions:</strong> 2,080 mm x 805 mm x 1,240 mm (81.9 x 31.7 x 48.8”)</li>
+      <li><strong>Minimum Ground Clearance:</strong> 310 mm (12.2″)</li>
+      <li><strong>Wheelbase:</strong> 1,430 mm (56.3″)</li>
+      <li><strong>Seat Height:</strong> 940 mm (37″)</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>ADDITIONAL FEATURES</strong></p>
+    <ul class="spec-list">
+      <li><strong>USB Connection:</strong> Single USB-2.1A Outlet</li>
+      <li><strong>Instrumentation:</strong> LCD Digital Dash</li>
+      <li><strong>Headlight:</strong> LED</li>
+    </ul>
+
+    <h4 style="margin-top:20px;">IMPRESSIVE FRAME DESIGN</h4>
+    <p style="margin-top:8px;">The Storm Bee’s high-strength aluminum frame offers both stiffness and flexibility to optimize the riding experience. The compact arrangement of the battery pack, motor control unit (MCU) and motor minimizes unsprung weight and balances the Storm Bee. The 1,430 mm wheelbase and steering geometry give the Storm Bee great maneuverability and excellent high-speed stability off-road.</p>
   </div>
 </div>
 
