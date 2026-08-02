@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bike Store</title>
+<title>SURRON</title>
 
 <style>
 *{
@@ -28,10 +28,48 @@ align-items:center;
 gap:15px;
 }
 
+/* Wrapper to hold both Menu Button and Search Bar */
+.header-actions {
+display: flex;
+align-items: center;
+gap: 12px;
+width: 100%;
+max-width: 550px;
+justify-content: center;
+}
+
+/* Menu Button Styling */
+.menu-button {
+background: transparent;
+border: 2px solid #333;
+border-radius: 12px;
+width: 44px;
+height: 44px;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+transition: background 0.2s, border-color 0.2s;
+flex-shrink: 0;
+}
+
+.menu-button:hover {
+background: #222;
+border-color: #555;
+}
+
+.menu-button svg {
+width: 22px;
+height: 22px;
+fill: none;
+stroke: #8e8e93;
+stroke-width: 2.5;
+stroke-linecap: round;
+}
+
 /* Search Container Styling */
 .search-container {
 width:100%;
-max-width:500px;
 display:flex;
 align-items:center;
 background:#ffffff;
@@ -58,6 +96,8 @@ display:flex;
 align-items:center;
 justify-content:center;
 color:#5f6368;
+width: auto;
+padding: 0;
 }
 
 .search-button svg {
@@ -123,7 +163,7 @@ font-weight:bold;
 margin:10px 0;
 }
 
-button{
+.card button{
 background:#0d6efd;
 color:white;
 border:none;
@@ -133,8 +173,126 @@ cursor:pointer;
 width:100%;
 }
 
-button:hover{
+.card button:hover{
 background:#0b5ed7;
+}
+
+/* Modal Overlay & Card Styling */
+.modal-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.7);
+display: none;
+justify-content: center;
+align-items: center;
+z-index: 1000;
+padding: 20px;
+}
+
+.modal-content {
+background: #fff;
+border-radius: 12px;
+max-width: 800px;
+width: 100%;
+max-height: 90vh;
+overflow-y: auto;
+padding: 30px;
+position: relative;
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+position: absolute;
+top: 15px;
+right: 20px;
+font-size: 28px;
+font-weight: bold;
+color: #666;
+cursor: pointer;
+border: none;
+background: none;
+}
+
+.close-modal:hover {
+color: #000;
+}
+
+.product-details-header {
+border-bottom: 1px solid #ddd;
+padding-bottom: 15px;
+margin-bottom: 20px;
+}
+
+.product-price {
+font-size: 24px;
+color: #0d6efd;
+font-weight: bold;
+margin: 10px 0;
+}
+
+.options-group {
+margin: 15px 0;
+}
+
+.options-group label {
+font-weight: bold;
+display: block;
+margin-bottom: 5px;
+}
+
+.options-group select, .options-group input {
+padding: 8px 12px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 14px;
+}
+
+.btn-add-cart {
+background: #0d6efd;
+color: #fff;
+border: none;
+padding: 12px 24px;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+font-weight: bold;
+margin-top: 10px;
+}
+
+.btn-add-cart:hover {
+background: #0b5ed7;
+}
+
+.perks-list {
+list-style: none;
+margin: 20px 0;
+padding: 0;
+background: #f9f9f9;
+border-radius: 8px;
+padding: 15px;
+}
+
+.perks-list li {
+margin-bottom: 10px;
+font-size: 14px;
+line-height: 1.4;
+}
+
+.perks-list li:last-child {
+margin-bottom: 0;
+}
+
+.spec-list {
+list-style: disc;
+padding-left: 20px;
+margin: 10px 0;
+}
+
+.spec-list li {
+margin-bottom: 6px;
 }
 
 footer{
@@ -154,14 +312,26 @@ margin-top:50px;
 <h1>Bike World</h1>
 <p>Your One-Stop Bike Shop</p>
 
-<!-- Top Search Bar -->
-<div class="search-container">
-<button class="search-button" aria-label="Search">
-<svg viewBox="0 0 24 24">
-<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-</svg>
-</button>
-<input type="text" class="search-input" placeholder="Search your product" aria-label="Search your product">
+<!-- Header Actions Container -->
+<div class="header-actions">
+  <!-- Rounded Menu Button -->
+  <button class="menu-button" aria-label="Toggle menu">
+    <svg viewBox="0 0 24 24">
+      <line x1="4" y1="6" x2="20" y2="6"></line>
+      <line x1="4" y1="12" x2="20" y2="12"></line>
+      <line x1="4" y1="18" x2="20" y2="18"></line>
+    </svg>
+  </button>
+
+  <!-- Top Search Bar -->
+  <div class="search-container">
+    <button class="search-button" aria-label="Search">
+      <svg viewBox="0 0 24 24">
+        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+    </button>
+    <input type="text" class="search-input" placeholder="Search your product" aria-label="Search your product">
+  </div>
 </div>
 </header>
 
@@ -176,73 +346,573 @@ margin-top:50px;
 
 <div class="grid">
 
+<!-- First Category: Light Bee -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1511994298241-608e28f14fde?w=800" alt="Mountain Bike">
+<img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg" alt="Light Bee">
 <div class="card-content">
-<h3>Mountain Bike</h3>
-<p>Designed for trails and rough terrain.</p>
-<div class="price">$850</div>
-<button>View Details</button>
+<h3>Light Bee</h3>
+<p>High-performance lightweight electric dirt bike.</p>
+<div class="price">$4,000.00</div>
+<button onclick="openModal('lightBeeModal')">View Details</button>
 </div>
 </div>
 
+<!-- Second Category: Storm Bee -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?w=800" alt="Road Bike">
+<img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg" alt="Storm Bee">
 <div class="card-content">
-<h3>Road Bike</h3>
-<p>Lightweight for speed on paved roads.</p>
-<div class="price">$1,200</div>
-<button>View Details</button>
+<h3>Storm Bee</h3>
+<p>Full-size electric off-road motorcycle with maximum power.</p>
+<div class="price">$7,000.00 – $7,500.00</div>
+<button onclick="openModal('stormBeeModal')">View Details</button>
 </div>
 </div>
 
+<!-- Third Category: Ultra Bee -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?w=800" alt="Electric Bike">
+<img src="https://sur-ronusa.us.com/wp-content/uploads/2025/05/AC97050F-8B1A-41FC-B767-9934FCD1A5E4-1024x1024_720x.webp" alt="Ultra Bee">
 <div class="card-content">
-<h3>Electric Bike</h3>
-<p>Power-assisted riding with long battery life.</p>
-<div class="price">$2,300</div>
-<button>View Details</button>
+<h3>Ultra Bee</h3>
+<p>Mid-sized, versatile off-road electric performance bike.</p>
+<div class="price">$6,000.00</div>
+<button onclick="openModal('ultraBeeModal')">View Details</button>
 </div>
 </div>
 
+<!-- Fourth Category: Hyper Bee -->
 <div class="card">
-<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800" alt="Kids Bike">
+<img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-hyper-bee-1.jpg" alt="Hyper Bee">
 <div class="card-content">
-<h3>Kids Bike</h3>
-<p>Safe and fun bikes for children.</p>
-<div class="price">$220</div>
-<button>View Details</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=800" alt="BMX Bike">
-<div class="card-content">
-<h3>BMX Bike</h3>
-<p>Perfect for tricks and freestyle riding.</p>
-<div class="price">$550</div>
-<button>View Details</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?w=800" alt="Hybrid Bike">
-<div class="card-content">
-<h3>Hybrid Bike</h3>
-<p>Combines comfort and performance.</p>
-<div class="price">$780</div>
-<button>View Details</button>
+<h3>Hyper Bee</h3>
+<p>Compact youth electric dirt bike designed for young riders.</p>
+<div class="price">$2,700.00 – $3,000.00</div>
+<button onclick="openModal('hyperBeeModal')">View Details</button>
 </div>
 </div>
 
 </div>
 
+</div>
+
+<!-- Light Bee Details Modal -->
+<div class="modal-overlay" id="lightBeeModal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('lightBeeModal')">&times;</button>
+    
+    <div class="product-details-header">
+      <h2>SURRON LIGHT BEE X</h2>
+      <p style="color:#777; font-size:14px; margin-top:4px;">Please leave a review.</p>
+      <div class="product-price">$4,000.00</div>
+    </div>
+
+    <p>The SURRON LIGHT BEE X offers 60V of power from a removable 32AH Panasonic Lithium ion battery pack with 4-piston hydraulic disc brakes Front and Rear. Climbing ability of over 45 degree and up to 100km of range and a short 2.5-3.5 hour charge time.</p>
+    
+    <p style="margin-top:10px;"><strong>Updates to our new models:</strong> New colors, Sine Wave Controller, Improved Riding Position, Heavier-duty gold O-ring chain, Updated brakes & Pro Handlebar Grip.</p>
+
+    <div class="options-group" style="margin-top:20px;">
+      <label for="color-select">COLOR:</label>
+      <select id="color-select">
+        <option value="">Choose an option</option>
+        <option value="green-purple">Green & Purple</option>
+        <option value="silver-orange">Silver & Orange</option>
+        <option value="black-orange">Black & Orange</option>
+        <option value="blue-orange">Blue & Orange</option>
+        <option value="all-black">All Black Edition</option>
+      </select>
+    </div>
+
+    <div class="options-group">
+      <label for="qty">SURRON LIGHT BEE X quantity:</label>
+      <input type="number" id="qty" value="1" min="1" style="width:70px;">
+    </div>
+
+    <button class="btn-add-cart">Add To Cart</button>
+
+    <p style="margin-top:15px; font-size:14px; color:#555;">
+      <strong>Categories:</strong> Sur-ron Electric Bike
+    </p>
+
+    <div style="margin-top:10px; font-size:14px;">
+      <strong>Share:</strong> Share | Tweet | Pinterest | Email
+    </div>
+
+    <ul class="perks-list">
+      <li><strong>Money Back Guarantee:</strong> You have the right to return your orders within 30 days with no hassle.</li>
+      <li><strong>Cryptocurrency Discounts:</strong> Get 20% Discount OFF when you pay with any cryptocurrency.</li>
+      <li><strong>Free Shipping Within USA:</strong> USA customers only need to wait for 3-4 days for order to arrive.</li>
+    </ul>
+
+    <h3>Product Description</h3>
+    <p style="margin-top:8px;"><strong>SURRON LIGHT BEE X – SURRON X</strong></p>
+    <p style="margin-top:8px;">The SurRun Light Bee X has become a worldwide phenomenon due to its accessibility, edgy design, zero emissions, and noise-free ride. Its lightweight aluminum frame is paired with off-road suspension specifically designed for this electric platform. Easy to handle and maneuver, even for newer riders, the Light Bee X also impresses experienced off-road enthusiasts with its capability to tackle challenging obstacles on the trails.</p>
+    <p style="margin-top:8px;">With a climbing ability of over 45 degrees, up to 100 km of range, and a short charge time, the SurRun Light Bee X promises endless fun in the dirt.</p>
+    <p style="margin-top:8px;">With 6 kW of electric power, a 75 km cruising range, a top speed of 75 km/h, and a curb weight of just 56 kg, the Surron Light Bee X represents premium electric technology.</p>
+
+    <h4 style="margin-top:20px;">NEW FOR 2025</h4>
+    <ul class="spec-list">
+      <li><strong>60V/40Ah Battery:</strong> Provides powerful performance and extended range.</li>
+      <li><strong>New Battery Connector:</strong> Ensures secure and efficient power delivery.</li>
+      <li><strong>New Ride-by-Wire Throttle with Dual Hall Sensor:</strong> Offers precise control and enhanced riding experience.</li>
+      <li><strong>Brand New Paint Process:</strong> Delivers a stunning finish with improved durability.</li>
+      <li><strong>Revised, Stronger Handlebar Mount:</strong> Increases stability and durability for rugged trails.</li>
+      <li><strong>Steering Stem Strengthening Ring:</strong> Adds extra strength to the steering mechanism for better handling.</li>
+      <li><strong>Limited-Edition Phantom Purple Color:</strong> Stand out with this unique and stylish option.</li>
+      <li><strong>17-Digit VIN and NVIS with All Models:</strong> Facilitates easy registration and compliance with regulations.</li>
+    </ul>
+
+    <h4 style="margin-top:20px;">KEY FEATURES</h4>
+    <ul class="spec-list">
+      <li><strong>6,000W Peak Power:</strong> Delivers impressive performance.</li>
+      <li><strong>Top Speed:</strong> 75 km/h for exhilarating rides.</li>
+      <li><strong>184 ft-lb (250 Nm) Peak Torque:</strong> Provides powerful acceleration.</li>
+      <li><strong>Range:</strong> 75 km at 40 km/h, ideal for extended adventures.</li>
+      <li><strong>Simple & Quick Charging:</strong> Connect to a standard wall outlet with the included charger. Charges to 100% in approximately 3 hours.</li>
+      <li><strong>Easy to Handle and Maneuver:</strong> Weighs just 56 kg (123 lb) with a low seat height of 32.6″ (830 mm).</li>
+      <li><strong>Adjustable Off-Road Suspension:</strong> Tailored for a smooth ride on varied terrains.</li>
+      <li><strong>Regenerative Braking:</strong> Enhances efficiency and extends range.</li>
+      <li><strong>45-Degree Climbing Angle:</strong> Tackles steep inclines with ease.</li>
+      <li><strong>Color Options:</strong> Available in black, blue, and silver, purple, with optional orange graphics included.</li>
+    </ul>
+
+    <h3 style="margin-top:20px;">Technical Specifications</h3>
+    
+    <p style="margin-top:10px;"><strong>Motor</strong></p>
+    <ul class="spec-list">
+      <li>Motor Type: PMSM</li>
+      <li>Cooling Method: Air-Cooled</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>Controller</strong></p>
+    <ul class="spec-list">
+      <li>Controller Type: X Version Sine Wave</li>
+      <li>Power Modes: Eco and Sport</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>Motor Power System</strong></p>
+    <ul class="spec-list">
+      <li>Rated Voltage: 60V (DC)</li>
+      <li>Rated Power / Peak Power: 3,000W / 6,000W</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>Certificates</strong></p>
+    <ul class="spec-list">
+      <li>Road Legal: No</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>Transmission</strong></p>
+    <ul class="spec-list">
+      <li>Gear Ratio: 1:7.6</li>
+      <li>Transmission: Primary Belt & 420 Drive Chain</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>Electrical Components</strong></p>
+    <ul class="spec-list">
+      <li>Battery: 60V 40Ah Lithium Battery</li>
+      <li>Battery Life: 500 Cycles (reduces thereafter)</li>
+      <li>Battery Charge Indicator: Integrated LCD Display</li>
+      <li>Charger: 10A</li>
+      <li>Charging Time: 2.5-3.5 Hours</li>
+      <li>USB Connection: Single USB-2.1 A Socket</li>
+      <li>Speedometer: LCD Digital Speedometer</li>
+      <li>Headlight & Rear Light: LED</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>Vehicle</strong></p>
+    <ul class="spec-list">
+      <li>Chassis & Swingarm: Forged Aluminum</li>
+      <li>Front Suspension: KKE Telescopic Fork, Adjustable for Preload & Rebound</li>
+      <li>Rear Shock Absorber: KKE with TR Intersect Link-type Suspension, Adjustable for Compression & Rebound</li>
+      <li>Wheel Type & Size: 19 x 1.4 Wire-Spoke Wheels Front/Rear, Alloy Hubs</li>
+      <li>Tire Size: 70/100-19 Front/Rear</li>
+      <li>Max Range: 75 km @ 40 km/h, depending on terrain</li>
+      <li>Net Weight: 56 kg</li>
+      <li>Max Recommended Load: 100 kg</li>
+      <li>Max Climbing Angle: 45 degrees</li>
+      <li>Rear Sprocket: 48T</li>
+      <li>Vehicle Dimensions: 1,870mm x 780mm x 1,040mm</li>
+      <li>Minimum Ground Clearance: 270mm</li>
+      <li>Wheelbase: 1,260mm</li>
+      <li>Seat Height: 830 mm</li>
+    </ul>
+
+    <h4 style="margin-top:20px;">IMPRESSIVE POWER-TO-WEIGHT RATIO</h4>
+    <p style="margin-top:8px;">The SURRON LIGHT BEE X’s torquey center-placed motor and high power-to-weight ratio propel it to speeds of up to 75 km/h and up hills as steep as 45 degrees. Flip the switch to Sport mode and unleash the Light Bee X’s full capabilities.</p>
+  </div>
+</div>
+
+<!-- Storm Bee Details Modal -->
+<div class="modal-overlay" id="stormBeeModal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('stormBeeModal')">&times;</button>
+    
+    <div class="product-details-header">
+      <h2>SURRON STORM BEE</h2>
+      <p style="color:#777; font-size:14px; margin-top:4px;">Please leave a review.</p>
+      <div class="product-price">$7,000.00 – $7,500.00</div>
+    </div>
+
+    <p>Surron have once again set the new benchmark for high-performance, electric off-road motorcycles. The SurRon Storm Bee will be available in three configurations: First, a competition MX version, followed by an enduro model and a road-legal version.</p>
+    <p style="margin-top:8px;">Benefitting from Surron’s proprietary powertrain and motorcycle design concept, the Storm Bee has an extremely high standard of performance. 0-50mph comes in only 3.6 seconds, due in part to the elimination of frequent gear shifting and clutch control.</p>
+
+    <div class="options-group" style="margin-top:20px;">
+      <label for="storm-model-select">MODEL:</label>
+      <select id="storm-model-select">
+        <option value="">Choose an option</option>
+        <option value="off-road">Off-Road</option>
+        <option value="road-legal">Road Legal</option>
+      </select>
+    </div>
+
+    <div class="options-group">
+      <label for="storm-qty">SURRON STORM BEE quantity:</label>
+      <input type="number" id="storm-qty" value="1" min="1" style="width:70px;">
+    </div>
+
+    <button class="btn-add-cart">Add To Cart</button>
+
+    <p style="margin-top:15px; font-size:14px; color:#555;">
+      <strong>Categories:</strong> Sur-ron Electric Bike
+    </p>
+
+    <div style="margin-top:10px; font-size:14px;">
+      <strong>Share:</strong> Share | Tweet | Pinterest | Email
+    </div>
+
+    <ul class="perks-list">
+      <li><strong>Money Back Guarantee:</strong> You have the right to return your orders within 30 days with no hassle.</li>
+      <li><strong>Cryptocurrency Discounts:</strong> Get 20% Discount OFF when you pay with any cryptocurrency.</li>
+      <li><strong>Free Shipping Within USA:</strong> USA customers only need to wait for 3-4 days for order to arrive.</li>
+    </ul>
+
+    <h3>Product Description</h3>
+    <p style="margin-top:8px;"><strong>SURRON STORM BEE ELECTRIC BIKE</strong></p>
+    <p style="margin-top:8px;">The SurRon Storm Bee comes standard with a multi-level, adjustable energy BERS (E-Brake Energy Return System) system to regenerate the battery during braking. Enjoy extra range and enjoy the ride without the anxiety.</p>
+    <p style="margin-top:8px;"><strong>ASR (Active Spin Reduction):</strong> The ASR traction control system was independently developed by Surron. With multiple levels of control and on-the-fly adjustability, the Storm Bee can adapt to a variety of road conditions for optimal grip and improved safety.</p>
+
+    <h4 style="margin-top:20px;">POWERFUL & INTELLIGENT</h4>
+    <p style="margin-top:8px;">SurRon Storm Bee is a power system with continuous output power of 5kW, including 5kW PMSM motor and 5kW FOC motor controller. The product can provide two rated voltage operating modes, 48V and 60V(Rated voltage expansion :48V/60V/72V/84V) which can be automatically adjusted according to the battery system. Due to the excellent heat dissipation structure design and multi-level temperature control strategy, the power system is able to make continuous stable large-scale power output under natural air cooling conditions, which has been applied to the SURRON light bee model with mass production.</p>
+
+    <h4 style="margin-top:20px;">KEY FEATURES OF THE STORM BEE F</h4>
+    <ul class="spec-list">
+      <li>Liquid-cooled, brushless electric motor</li>
+      <li>22.5 kW peak power, 520 Nm peak torque</li>
+      <li>Max. range: 120 km (75 miles) on a full charge @ 50 km/h (31 mph)</li>
+      <li>3 riding modes, traction control, regenerative braking</li>
+      <li>Turbo mode & reverse gear</li>
+      <li>Adjustable off-road suspension, 21/18” wheels (front/rear)</li>
+      <li>Quiet & emissions-free</li>
+      <li>Switchable headlight & number plate included (North American version only)</li>
+    </ul>
+
+    <h3 style="margin-top:20px;">TECHNICAL SPECIFICATIONS</h3>
+    
+    <p style="margin-top:10px;"><strong>POWERTRAIN</strong></p>
+    <ul class="spec-list">
+      <li><strong>Motor Type:</strong> Liquid-cooled, brushless electric (BLDC) motor</li>
+      <li><strong>Rated Voltage:</strong> 104V (DC)</li>
+      <li><strong>Rated Power/Peak Power:</strong> 10,000W / 22,500W</li>
+      <li><strong>Controller Type:</strong> FOC Sine Wave</li>
+      <li><strong>Peak Torque:</strong> 520 Nm (383 ft-lbs)</li>
+      <li><strong>Top Speed:</strong> 110 km/h (68 mph)</li>
+      <li><strong>Max Range:</strong> 120 km @ 50 km/h (75 miles @ 31 mph), depending upon terrain</li>
+      <li><strong>Battery:</strong> 104V/55Ah Lithium Ion</li>
+      <li><strong>Charger:</strong> 10A</li>
+      <li><strong>Charging Time:</strong> 4 Hours (0-100%)</li>
+      <li><strong>Drive:</strong> 530 O-ring Chain</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>RIDER AIDS</strong></p>
+    <ul class="spec-list">
+      <li><strong>Riding Modes:</strong> Sport, Rain, Eco, Turbo</li>
+      <li><strong>Rider Aids:</strong> ASR (Acceleration Slip Reduction, a.k.a. traction control), BERS (Brake Energy Regenerative System)</li>
+      <li><strong>Reverse Gear:</strong> Button-activated</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>CHASSIS</strong></p>
+    <ul class="spec-list">
+      <li><strong>Front Suspension:</strong> 47 mm inverted fork, 290 mm travel, adjustable compression & rebound</li>
+      <li><strong>Rear:</strong> Fully adjustable monoshock, 290 mm wheel travel</li>
+      <li><strong>Front Wheel:</strong> 21″ wire-spoked rim, 80/100-21 off-road tire</li>
+      <li><strong>Rear Wheel:</strong> 18″ wire-spoked rim, 100/90-18 off-road tire</li>
+      <li><strong>Curb Weight:</strong> 127 kg (280 lbs)</li>
+      <li><strong>Max Load:</strong> 100 kg (220 lbs)</li>
+      <li><strong>Vehicle Dimensions:</strong> 2,080 mm x 805 mm x 1,240 mm (81.9 x 31.7 x 48.8”)</li>
+      <li><strong>Minimum Ground Clearance:</strong> 310 mm (12.2″)</li>
+      <li><strong>Wheelbase:</strong> 1,430 mm (56.3″)</li>
+      <li><strong>Seat Height:</strong> 940 mm (37″)</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>ADDITIONAL FEATURES</strong></p>
+    <ul class="spec-list">
+      <li><strong>USB Connection:</strong> Single USB-2.1A Outlet</li>
+      <li><strong>Instrumentation:</strong> LCD Digital Dash</li>
+      <li><strong>Headlight:</strong> LED</li>
+    </ul>
+
+    <h4 style="margin-top:20px;">IMPRESSIVE FRAME DESIGN</h4>
+    <p style="margin-top:8px;">The Storm Bee’s high-strength aluminum frame offers both stiffness and flexibility to optimize the riding experience. The compact arrangement of the battery pack, motor control unit (MCU) and motor minimizes unsprung weight and balances the Storm Bee. The 1,430 mm wheelbase and steering geometry give the Storm Bee great maneuverability and excellent high-speed stability off-road.</p>
+  </div>
+</div>
+
+<!-- Ultra Bee Details Modal -->
+<div class="modal-overlay" id="ultraBeeModal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('ultraBeeModal')">&times;</button>
+    
+    <div class="product-details-header">
+      <h2>SURRON ULTRA BEE HP 2025</h2>
+      <p style="color:#777; font-size:14px; margin-top:4px;">Please leave a review.</p>
+      <div class="product-price">$6,000.00</div>
+    </div>
+
+    <p><strong>SurRon Ultra Bee HP 2025 – (Now Available in Stock and Ready for immediate Delivery)!</strong></p>
+    <p style="margin-top:8px;">The next evolution in electric off-road performance is here. The 2025 Ultra Bee pushes boundaries with a massive power upgrade, redesigned suspension, and high-efficiency motor tech—all while retaining the nimble ride feel SurRon is known for.</p>
+    <p style="margin-top:8px;"><strong>Power Upgrade – Now 21kW Peak:</strong> Tap into insane acceleration with the all-new Turbo Mode, peaking at 21kW and maintaining 18kW continuous in Sport Mode. That means 0–31mph in just 2 seconds, or a blistering 1.1 seconds to 18.7mph off the line. The 2024 outgoing model peaked at just 12.5kw. While that was plenty, this is a huge and fully welcomed upgrade!</p>
+
+    <div class="options-group" style="margin-top:20px;">
+      <label for="ultra-color-select">COLOR:</label>
+      <select id="ultra-color-select">
+        <option value="">Choose an option</option>
+        <option value="carbon-black">CARBON BLACK</option>
+        <option value="desert-brown">DESERT BROWN</option>
+      </select>
+    </div>
+
+    <div class="options-group">
+      <label for="ultra-model-select">MODEL:</label>
+      <select id="ultra-model-select">
+        <option value="">Choose an option</option>
+        <option value="road-legal">Road Legal</option>
+        <option value="off-road">Off-Road</option>
+      </select>
+    </div>
+
+    <div class="options-group">
+      <label for="ultra-qty">SURRON ULTRA BEE HP 2025 quantity:</label>
+      <input type="number" id="ultra-qty" value="1" min="1" style="width:70px;">
+    </div>
+
+    <button class="btn-add-cart">Add To Cart</button>
+
+    <p style="margin-top:15px; font-size:14px; color:#555;">
+      <strong>Categories:</strong> Sur-ron Electric Bike
+    </p>
+
+    <div style="margin-top:10px; font-size:14px;">
+      <strong>Share:</strong> Share | Tweet | Pinterest | Email
+    </div>
+
+    <ul class="perks-list">
+      <li><strong>Money Back Guarantee:</strong> You have the right to return your orders within 30 days with no hassle.</li>
+      <li><strong>Cryptocurrency Discounts:</strong> Get 20% Discount OFF when you pay with any cryptocurrency.</li>
+      <li><strong>Free Shipping Within USA:</strong> USA customers only need to wait for 3-4 days for order to arrive.</li>
+    </ul>
+
+    <h3>Product Description</h3>
+    <p style="margin-top:8px;"><strong>2025 SURRON ULTRA BEE HP 21KW ELECTRIC DIRT BIKE</strong></p>
+    <p style="margin-top:8px;">Surron Ultra Bee HP 2025 the bike that everyone has been anticipating! The Surron Ultra Bee – Electric Dirt Bike – the world’s most favorite electric bike brand has done it again with this outstanding new model! The Ultra offers the answer to everyone’s prayers – more power, overall size increase and low weight plus some excellent new innovations!</p>
+    <p style="margin-top:8px;">Since the brand was introduction in 2016 it now boasts a suave global reputation and means fierce business and serious competition! It’s not hard to see why this world wide phenomenon is taking on the likes of the conventional petrol bikes fiercely – but take note this is by no means a street legal bicycle, this is strictly a private property use dirt bike.</p>
+    <p style="margin-top:8px;">Take to the trails with the Ultra Bee, which comes as standard with a 21KW Peak Output which will lay down a whopping 511nm and achieve up to 95km/h with ease! Plus with some excellent innovations such as the built in charger storage compartment under the seat, traction control and much more! The Ultra makes for the perfect outdoor expedition, trail bike, farm bike or the weekend recreational rider, which with this said is an ideal bike for almost all ages.</p>
+    <p style="margin-top:8px;">Conquer all trails and more with ease on the Surron Ultra Dirt Bike with 4 Piston Brakes, a Removable and Swappable 60AH Battery with premium and a seriously lightweight Aluminium construction, this is a bike that is incredibly robust but also charges in record time with the included Fast Charger of 4hrs!</p>
+
+    <h4 style="margin-top:20px;">Surron Ultra Bee HP 2025 Key Features:</h4>
+    <ul class="spec-list">
+      <li>74V – 60AH Lithium Battery</li>
+      <li>Range of 140km (Cruising @40km/h)</li>
+      <li>21KW Motor with 511Nm of Torque</li>
+      <li>Top Speed 95km/h</li>
+      <li>New and Improved Fork</li>
+      <li>Under seat charger storage</li>
+    </ul>
+
+    <h4 style="margin-top:20px;">New Features & Improvements</h4>
+    <ul class="spec-list">
+      <li><strong>Turbo Button:</strong> Unleashes full 21kW peak power</li>
+      <li><strong>Crawling Function:</strong> Fine control for technical off-road terrain</li>
+      <li><strong>Upgraded Battery:</strong> 74V60Ah for extended range and punch</li>
+      <li><strong>Advanced MTPA/MTPV Controller:</strong> Smarter power delivery</li>
+      <li><strong>Hairpin Motor:</strong> Improved efficiency & rapid heat dissipation</li>
+      <li><strong>0–59mph Top Speed:</strong> Lightweight but ferocious</li>
+      <li><strong>New Suspension System:</strong> 50% stronger gold fork with uniform wall thickness & upgraded damping for 30% better impact resistance</li>
+      <li><strong>Primary Drive Overhaul:</strong> Carbon fiber belt + forged pulleys with tungsten carbide surfaces (3x wear resistance)</li>
+    </ul>
+
+    <h4 style="margin-top:20px;">Range & Charging</h4>
+    <ul class="spec-list">
+      <li><strong>Range:</strong> 70 miles (at a reduced speed)</li>
+      <li><strong>Charge Time:</strong> 20% to 80% in just 2.5 hours</li>
+    </ul>
+
+    <h4 style="margin-top:20px;">Design & Aesthetic Enhancements</h4>
+    <ul class="spec-list">
+      <li>Sleek new sand-gold body color or Carbon Black</li>
+      <li>Gold-accented front fork and guard plate decals</li>
+      <li>New custom 18″ rear wheel set</li>
+      <li>Slight weight increase (up 8 lbs) for added durability and power delivery</li>
+      <li>Available in Carbon Black or Desert Brown</li>
+    </ul>
+
+    <p style="margin-top:15px;"><strong>Ride Modes:</strong> Eco / Daily / Sport / Reverse / Turbo (Plus 3-level adjustable crawling control)</p>
+
+    <h3 style="margin-top:20px;">Specs</h3>
+    <ul class="spec-list">
+      <li><strong>Motor:</strong> PMSM w/ MTPA/MTPV Controller</li>
+      <li><strong>Max Power:</strong> 21kW (Turbo) / 18kW (Sports)</li>
+      <li><strong>Max Torque (on wheel):</strong> 376.9 ft-lbs</li>
+      <li><strong>Battery:</strong> 74V / 60Ah Lithium-ion</li>
+      <li><strong>Top Speed:</strong> 59mph</li>
+      <li><strong>Seat Height:</strong> 35.8 in</li>
+      <li><strong>Ground Clearance:</strong> 12.4 in</li>
+      <li><strong>Wheelbase:</strong> 54.3 in</li>
+      <li><strong>Frame:</strong> Forged aluminum alloy</li>
+      <li><strong>Front Tire:</strong> 80/100-19 Off-Road</li>
+      <li><strong>Rear Tire:</strong> 100/90-18 Off-Road</li>
+      <li><strong>Front Fork Travel:</strong> 9.4 in</li>
+      <li><strong>Rear Shock Travel:</strong> 3.3 in (Wheel Travel: 9.4 in)</li>
+      <li><strong>Throttle Curve:</strong> Three settings</li>
+      <li><strong>Rider Weight Capacity:</strong> 220 lbs</li>
+      <li><strong>Weight:</strong> 195 lbs (dry)</li>
+    </ul>
+
+    <h4 style="margin-top:20px;">Smart Features</h4>
+    <p style="margin-top:5px;">SRTC + BERS assist systems</p>
+
+    <h3 style="margin-top:20px;">Instructions: Settings and ASR Setup</h3>
+    <p style="margin-top:10px;"><strong>1. Power On and Enter Settings Mode</strong></p>
+    <ul class="spec-list">
+      <li>With the kickstand down, power on the bike.</li>
+      <li>Hold the Ready and ASR buttons (front-facing buttons on the right and left grips) for 3 seconds until the display shows a letter B and a number.</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>2. Navigating Settings</strong></p>
+    <ul class="spec-list">
+      <li>Tap ASR to move to the next setting.</li>
+      <li>Tap Ready to change the setting value.</li>
+    </ul>
+
+    <p style="margin-top:10px;"><strong>3. Settings Overview</strong></p>
+    <ul class="spec-list">
+      <li><strong>BO B5:</strong> Brake regeneration (activates when battery is under 95% in Sport mode)</li>
+      <li><strong>EO E5:</strong> Engine coasting regeneration</li>
+      <li><strong>A1 A3:</strong> Anti-Slip traction control (ASR)</li>
+      <li><strong>PO P1:</strong> Pause throttle when brake is applied</li>
+      <li><strong>8 C1:</strong> Crash cutoff (C1 disables motor if bike tilts too far)</li>
+      <li><strong>F1 F3:</strong> Throttle sensitivity in Sport mode</li>
+      <li><strong>TO T1:</strong> Testing mode (records diagnostics)</li>
+      <li><strong>U1 U3:</strong> Charging speed control for utility power</li>
+    </ul>
+
+    <h4 style="margin-top:20px;">How to Set Up ASR (Anti-Slip Traction Control)</h4>
+    <p style="margin-top:10px;"><strong>1. Activating ASR</strong></p>
+    <p style="margin-top:5px;">To enable ASR for steep slopes or slippery conditions, press the ASR button three times in a row. The ASR light will turn green to indicate it’s active.</p>
+
+    <p style="margin-top:10px;"><strong>2. ASR Strength Levels</strong></p>
+    <p style="margin-top:5px;">The right-side instrument shows ASR strength: One bar for lightest assistance (still allows short wheelies), or three bars for maximum traction control.</p>
+
+    <p style="margin-top:10px;"><strong>3. Adjusting ASR While Riding</strong></p>
+    <ul class="spec-list">
+      <li>To toggle ASR on/off while riding: press the ASR button three times.</li>
+      <li>To adjust strength while riding: hold ASR and then double-click the reverse (r & s) button.</li>
+    </ul>
+
+    <p style="margin-top:15px; font-style:italic;">Every PEV purchase includes a standard charger in the box. We also have fast chargers available for purchase.</p>
+  </div>
+</div>
+
+<!-- Hyper Bee Details Modal -->
+<div class="modal-overlay" id="hyperBeeModal">
+  <div class="modal-content">
+    <button class="close-modal" onclick="closeModal('hyperBeeModal')">&times;</button>
+    
+    <div class="product-details-header">
+      <h2>SURRON HYPER BEE</h2>
+      <p style="color:#777; font-size:14px; margin-top:4px;">Please leave a review.</p>
+      <div class="product-price">$2,700.00 – $3,000.00</div>
+    </div>
+
+    <p><strong>Surron Hyper Bee Coming Soon! Pre-Order NOW.</strong></p>
+    <p style="margin-top:8px;">Get ready for a new chapter in off-road performance with the upcoming Surron Hyper Bee. This electric bike is set to bring a fresh wave of innovation and power, designed for those who enjoy pushing their limits. Uncompromising design gives rise to a new breed of vehicle, one that’s bold by nature and sharp by design.</p>
+
+    <div class="options-group" style="margin-top:20px;">
+      <label for="hyper-color-select">COLOR:</label>
+      <select id="hyper-color-select">
+        <option value="">Choose an option</option>
+        <option value="white-pink">White/Pink</option>
+        <option value="black-blue">Black/Blue</option>
+        <option value="yellow">Yellow</option>
+        <option value="black-green">Black/Green</option>
+      </select>
+    </div>
+
+    <div class="options-group">
+      <label for="hyper-qty">SURRON HYPER BEE quantity:</label>
+      <input type="number" id="hyper-qty" value="1" min="1" style="width:70px;">
+    </div>
+
+    <button class="btn-add-cart">Add To Cart</button>
+
+    <p style="margin-top:15px; font-size:14px; color:#555;">
+      <strong>Categories:</strong> Sur-ron Electric Bike
+    </p>
+
+    <div style="margin-top:10px; font-size:14px;">
+      <strong>Share:</strong> Share | Tweet | Pinterest | Email
+    </div>
+
+    <ul class="perks-list">
+      <li><strong>Money Back Guarantee:</strong> You have the right to return your orders within 30 days with no hassle.</li>
+      <li><strong>Cryptocurrency Discounts:</strong> Get 20% Discount OFF when you pay with any cryptocurrency.</li>
+      <li><strong>Free Shipping Within USA:</strong> USA customers only need to wait for 3-4 days for order to arrive.</li>
+    </ul>
+
+    <h3>Product Description</h3>
+    <p style="margin-top:8px;"><strong>SurRon Hyper Bee Coming Soon !!!</strong></p>
+    <p style="margin-top:8px;">The new Surron Hyper Bee is the newest and most compact model and therefore a pit bike / mini bike in the SURRON series. Robust, minimalist, compact and powerful for all kids or smaller riders. Thanks to many years of experience on the market, SURRON has once again created a superlative minibike using the latest technology and manufacturing skills.</p>
+    <p style="margin-top:8px;">The new Surron Hyper Bee offers a futuristic frame design, a newly positioned engine, a stylish mini LED strip in the front mask, a stable suspension fork and many other ingenious features as standard. Teenagers, adults, and young riders who are interested in pit bikes are the target audience for the Hyper Bee.</p>
+
+    <h4 style="margin-top:20px;">Suspension System</h4>
+    <p style="margin-top:8px;">The rear suspension features a fully adjustable air shock with 60mm of travel, allowing for a maximum rear wheel travel of 185mm. This provides riders with the confidence and capability to conquer any terrain. Featuring advanced 35mm inverted front suspension with an impressive 170mm of travel and easily adjustable rebound and compression damping, these forks adapt to riding style for ultimate control. Innovative low-friction coating on the inner tubes ensures a buttery-smooth performance, elevating ride experience to the next level.</p>
+
+    <h4 style="margin-top:20px;">Braking System</h4>
+    <p style="margin-top:8px;">Efficient Braking, Effortless Control. A custom-designed dual-piston hydraulic braking system, featuring 180mm front and 160mm rear discs, delivers superior stopping power. Thicker discs and pads provide increased strength and heat capacity, resulting in reduced brake fade even under demanding riding conditions. The one-piece forged calipers not only guarantee powerful braking but also provide a smooth and progressive feel, giving riders complete confidence and control on any terrain. A large 6.25:1 piston ratio ensures effortless braking power, even for riders with smaller hands. Both brake levers feature tool-free reach adjustment dials, allowing for personalized lever throw and comfortable operation with either one or two fingers.</p>
+
+    <h4 style="margin-top:20px;">High Performance Motor</h4>
+    <p style="margin-top:8px;">With a maximum power output of up to 5KW, this motor features an embedded magnetic cylinder design that optimizes the use of motor flux weakening control to enhance speed and performance. It can deliver an impressive torque of 159 N.m to the drive wheel, achieving 0-50 km/h acceleration in just 3.6 seconds. The motor significantly increases the heat dissipation area exposed to airflow, effectively reducing operating temperatures with unique longitudinal structure. This ensures reliable performance even in the most challenging conditions, empowering riders to push forward with confidence.</p>
+
+    <h3 style="margin-top:20px;">BIKE SPECIFICS</h3>
+    <ul class="spec-list">
+      <li><strong>Dimensions:</strong> 1500 x 680 x 885 mm</li>
+      <li><strong>Curb Weight:</strong> 39kg</li>
+      <li><strong>Seat Height:</strong> 685mm</li>
+      <li><strong>Power System:</strong> PMSM, FOC Sinewave Controller</li>
+      <li><strong>Riding Modes:</strong> 1/2/3/ Reverse R</li>
+      <li><strong>Front Suspension:</strong> 35mm inverted dual shoulder – oil spring type adjustable rebound damping – adjustable compression damping pressure total length 625mm, stroke 170mm</li>
+      <li><strong>Rear Suspension:</strong> Airbag type adjustable 230mm single rear shock 60mm/185mm</li>
+      <li><strong>Charge Time (20%-80%):</strong> 2.5 Hrs</li>
+    </ul>
+  </div>
 </div>
 
 <footer>
 <p>© 2026 Bike World. All Rights Reserved.</p>
 </footer>
+
+<script>
+function openModal(modalId) {
+  document.getElementById(modalId).style.display = 'flex';
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = 'none';
+}
+
+// Close modal when clicking outside of modal content
+window.onclick = function(event) {
+  if (event.target.classList.contains('modal-overlay')) {
+    event.target.style.display = "none";
+  }
+}
+</script>
 
 </body>
 </html>
