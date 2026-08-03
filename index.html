@@ -177,47 +177,69 @@ width:100%;
 background:#0b5ed7;
 }
 
-/* Modal Overlay & Card Styling */
+/* Full-Page Modal View Styling */
 .modal-overlay {
 position: fixed;
 top: 0;
 left: 0;
-width: 100%;
-height: 100%;
-background: rgba(0, 0, 0, 0.7);
+width: 100vw;
+height: 100vh;
+background: #ffffff;
 display: none;
-justify-content: center;
-align-items: center;
 z-index: 1000;
-padding: 20px;
+overflow-y: auto;
 }
 
 .modal-content {
 background: #fff;
-border-radius: 12px;
-max-width: 800px;
 width: 100%;
-max-height: 90vh;
-overflow-y: auto;
-padding: 30px;
+max-width: 1000px;
+margin: 0 auto;
+padding: 20px 20px 60px 20px;
 position: relative;
-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+box-shadow: none;
+border-radius: 0;
+animation: slideInPage 0.3s ease-out forwards;
 }
 
-.close-modal {
-position: absolute;
-top: 15px;
-right: 20px;
-font-size: 28px;
-font-weight: bold;
-color: #666;
-cursor: pointer;
-border: none;
-background: none;
+@keyframes slideInPage {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.close-modal:hover {
-color: #000;
+/* Sticky Header Bar for Details View */
+.page-nav-bar {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  z-index: 10;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.back-btn {
+  font-size: 16px;
+  font-weight: bold;
+  color: #0d6efd;
+  cursor: pointer;
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-btn:hover {
+  color: #0b5ed7;
 }
 
 .product-details-header {
@@ -397,7 +419,9 @@ margin-top:50px;
 <!-- Light Bee Details Modal -->
 <div class="modal-overlay" id="lightBeeModal">
   <div class="modal-content">
-    <button class="close-modal" onclick="closeModal('lightBeeModal')">&times;</button>
+    <div class="page-nav-bar">
+      <button class="back-btn" onclick="closeModal('lightBeeModal')">← Back to Store</button>
+    </div>
     
     <div class="product-details-header">
       <h2>SURRON LIGHT BEE X</h2>
@@ -543,7 +567,9 @@ margin-top:50px;
 <!-- Storm Bee Details Modal -->
 <div class="modal-overlay" id="stormBeeModal">
   <div class="modal-content">
-    <button class="close-modal" onclick="closeModal('stormBeeModal')">&times;</button>
+    <div class="page-nav-bar">
+      <button class="back-btn" onclick="closeModal('stormBeeModal')">← Back to Store</button>
+    </div>
     
     <div class="product-details-header">
       <h2>SURRON STORM BEE</h2>
@@ -657,7 +683,9 @@ margin-top:50px;
 <!-- Ultra Bee Details Modal -->
 <div class="modal-overlay" id="ultraBeeModal">
   <div class="modal-content">
-    <button class="close-modal" onclick="closeModal('ultraBeeModal')">&times;</button>
+    <div class="page-nav-bar">
+      <button class="back-btn" onclick="closeModal('ultraBeeModal')">← Back to Store</button>
+    </div>
     
     <div class="product-details-header">
       <h2>SURRON ULTRA BEE HP 2025</h2>
@@ -822,7 +850,9 @@ margin-top:50px;
 <!-- Hyper Bee Details Modal -->
 <div class="modal-overlay" id="hyperBeeModal">
   <div class="modal-content">
-    <button class="close-modal" onclick="closeModal('hyperBeeModal')">&times;</button>
+    <div class="page-nav-bar">
+      <button class="back-btn" onclick="closeModal('hyperBeeModal')">← Back to Store</button>
+    </div>
     
     <div class="product-details-header">
       <h2>SURRON HYPER BEE</h2>
@@ -899,18 +929,15 @@ margin-top:50px;
 
 <script>
 function openModal(modalId) {
-  document.getElementById(modalId).style.display = 'flex';
+  const targetModal = document.getElementById(modalId);
+  targetModal.style.display = 'block';
+  targetModal.scrollTop = 0; // Ensures view starts at top of page
+  document.body.style.overflow = 'hidden'; // Prevents background body scrolling
 }
 
 function closeModal(modalId) {
   document.getElementById(modalId).style.display = 'none';
-}
-
-// Close modal when clicking outside of modal content
-window.onclick = function(event) {
-  if (event.target.classList.contains('modal-overlay')) {
-    event.target.style.display = "none";
-  }
+  document.body.style.overflow = 'auto'; // Re-enables background body scrolling
 }
 </script>
 
