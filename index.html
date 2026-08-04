@@ -509,35 +509,33 @@ body {
 }
 
 /* ==========================================
-   HEADER BANNER (ACCESSORIES SECTION STYLING)
+   HEADER BANNER & ACCESSORIES SECTION
    ========================================== */
+.accessories-section {
+  margin-top: 50px;
+  background-color: #000000;
+  padding-bottom: 40px;
+  border-radius: 0;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+}
+
 .header-banner {
-  /* Spans full width end-to-end */
   width: 100%;
   margin-left: 0;
   margin-right: 0;
-  
-  /* Removes rounded corners */
   border-radius: 0;
-  
-  /* Background styling */
-  background-color: #1a1a1a; /* Replace with your background color or image */
+  background-color: #0a0a0a;
   color: #ffffff;
-  
-  /* Inner spacing inside the banner */
-  padding: 20px 0;
+  padding: 25px 0;
   text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Ensure the heading inside inherits or resets default margins if needed */
 .header-banner h2 {
   margin: 0;
-}
-
-.accessories-section {
-  margin-top: 50px;
-  border-radius: 0;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 .slider-container {
@@ -545,11 +543,11 @@ body {
   gap: 24px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 20px 5% 25px 5%;
+  padding: 30px 5% 30px 5%;
   max-width: 1200px;
   margin: 0 auto;
   scrollbar-width: thin;
-  scrollbar-color: #38bdf8 rgba(255, 255, 255, 0.05);
+  scrollbar-color: #38bdf8 rgba(255, 255, 255, 0.1);
 }
 
 .slider-container::-webkit-scrollbar {
@@ -570,10 +568,10 @@ body {
   flex: 0 0 calc(33.333% - 16px);
   min-width: 280px;
   scroll-snap-align: start;
-  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  background: #ffffff;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   transition: all 0.3s ease;
   display: flex;
@@ -584,13 +582,13 @@ body {
 
 .accessory-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(56, 189, 248, 0.25), 0 15px 30px rgba(0, 0, 0, 0.5);
-  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  border-color: #38bdf8;
 }
 
 .accessory-img-wrapper {
   height: 200px;
-  background: #020617;
+  background: #f8fafc;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -603,12 +601,10 @@ body {
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
-  filter: brightness(0.95);
 }
 
 .accessory-card:hover .accessory-img-wrapper img {
   transform: scale(1.05);
-  filter: brightness(1.05);
 }
 
 .discount-badge {
@@ -635,13 +631,13 @@ body {
 .accessory-content h4 {
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
+  color: #0f172a;
   margin-bottom: 6px;
 }
 
 .accessory-content p {
   font-size: 14px;
-  color: #94a3b8;
+  color: #475569;
   margin-bottom: 12px;
   flex-grow: 1;
   line-height: 1.5;
@@ -663,14 +659,14 @@ body {
 
 .current-price {
   font-size: 22px;
-  color: #38bdf8;
+  color: #0284c7;
   font-weight: 800;
 }
 
 .add-cart-btn {
   background: linear-gradient(135deg, #0d6efd 0%, #0052cc 100%);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: none;
   padding: 12px 18px;
   border-radius: 50px;
   font-weight: 700;
@@ -688,7 +684,6 @@ body {
 .add-cart-btn:hover {
   background: linear-gradient(135deg, #38bdf8 0%, #0d6efd 100%);
   color: #000000;
-  border-color: #38bdf8;
   box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
   transform: translateY(-2px);
 }
@@ -697,6 +692,36 @@ body {
   width: 18px;
   height: 18px;
   fill: currentColor;
+}
+
+.view-more-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.view-more-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #38bdf8;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.view-more-btn:hover {
+  background: #38bdf8;
+  color: #000000;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
 }
 
 /* ==========================================
@@ -1097,7 +1122,7 @@ footer {
 
 </div>
 
-<!-- Accessories Section with Full-Width Header Banner -->
+<!-- Accessories Section with Black Background and Full-Width Header Banner -->
 <div class="accessories-section" id="accessories">
   <div class="header-banner">
     <h2>🔧 Accessories</h2>
@@ -1178,10 +1203,14 @@ footer {
     </div>
 
   </div>
+
+  <div class="view-more-container">
+    <button class="view-more-btn">View More</button>
+  </div>
 </div>
 
 <div class="container">
-  <!-- FEATURES / VALUE PROPOSITION SECTION -->
+  <!-- UPDATED FEATURES / VALUE PROPOSITION SECTION -->
   <div class="features-section">
     <!-- Box 1: Fastest Delivery -->
     <div class="feature-box">
@@ -1195,10 +1224,10 @@ footer {
         </svg>
       </div>
       <h3>Fastest Delivery</h3>
-      <p>Fast and free delivery within the USA with tracking number.</p>
+      <p>Fast and free delivery across the USA with real-time order tracking.</p>
     </div>
 
-    <!-- Box 2: Quality E-Bikes -->
+    <!-- Box 2: Flexible Installments -->
     <div class="feature-box">
       <div class="feature-icon-wrapper">
         <svg class="feature-icon" viewBox="0 0 24 24">
@@ -1207,8 +1236,8 @@ footer {
           <path d="M2 9h20"/>
         </svg>
       </div>
-      <h3>Quality E-Bikes</h3>
-      <p>Top Quality E-Bikes Sold At The Lowest Sustainable Price.</p>
+      <h3>Pay In Installments</h3>
+      <p>Flexible payment plans available—split your ride into easy monthly installments.</p>
     </div>
 
     <!-- Box 3: Secure Payments -->
@@ -1221,7 +1250,7 @@ footer {
         </svg>
       </div>
       <h3>Secure Payments</h3>
-      <p>We support multiple secure payment methods.</p>
+      <p>Multiple encrypted payment options, flexible financing, and crypto discounts.</p>
     </div>
   </div>
 </div>
