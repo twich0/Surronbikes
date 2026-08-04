@@ -100,7 +100,7 @@ body {
   font-weight: 600;
 }
 
-/* Search Bar & Header Controls */
+/* Search Bar & Header Controls (UPDATED TO WHITE) */
 .header-actions-center {
   flex: 1;
   max-width: 520px;
@@ -113,18 +113,17 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
   border-radius: 50px;
   padding: 6px 14px 6px 18px;
-  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
 
 .search-container:focus-within {
-  background: rgba(0, 0, 0, 0.6);
   border-color: #ff4d4d;
-  box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+  box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
 }
 
 .search-input {
@@ -133,11 +132,11 @@ body {
   background: transparent;
   outline: none;
   font-size: 14px;
-  color: #ffffff;
+  color: #0f172a;
 }
 
 .search-input::placeholder {
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .search-button {
@@ -147,7 +146,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
+  color: #64748b;
   padding: 4px;
   transition: color 0.2s ease;
 }
@@ -975,7 +974,7 @@ footer {
     <div class="header-actions-center">
       <div class="search-container">
         <input type="text" id="searchInput" class="search-input" placeholder="Search bikes, parts, accessories..." aria-label="Search store">
-        <button class="search-button" aria-label="Search">
+        <button class="search-button" id="searchBtn" aria-label="Search">
           <svg viewBox="0 0 24 24">
             <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
           </svg>
@@ -1690,8 +1689,9 @@ menuToggleBtn.addEventListener('click', () => {
 
 // Live Search Filter Logic
 const searchInput = document.getElementById('searchInput');
+const searchBtn = document.getElementById('searchBtn');
 
-searchInput.addEventListener('keyup', function() {
+function performSearch() {
   const filter = searchInput.value.toLowerCase().trim();
   
   // Filter Bike Grid Cards
@@ -1715,6 +1715,15 @@ searchInput.addEventListener('keyup', function() {
       acc.style.display = 'none';
     }
   });
+}
+
+// Trigger filter on keyup
+searchInput.addEventListener('keyup', performSearch);
+
+// Trigger filter on search button click
+searchBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  performSearch();
 });
 </script>
 
