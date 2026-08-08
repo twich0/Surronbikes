@@ -3,1438 +3,3888 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Surron Bike Store</title>
+
+<title>BIKE WORLD | Performance E-Mobility</title>
+
+<meta name="description"
+      content="Discover high-performance electric motorcycles, bikes and accessories at Bike World.">
 
 <style>
-/* Modern Reset & Global Typography */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-}
-
-body {
-  background-color: #f8fafc;
-  color: #0f172a;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* ==========================================
-   HEADER & HERO REDESIGN
-   ========================================== */
-.site-header-hero {
-  background: linear-gradient(180deg, rgba(9, 13, 22, 0.75) 0%, rgba(9, 13, 22, 0.92) 100%),
-              url('hero-bg.jpg') center/cover no-repeat;
-  color: #ffffff;
-  position: relative;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-}
-
-.site-header-hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 45, 87, 0.6), transparent);
-}
-
-/* Top Navigation Bar */
-.top-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 5%;
-  max-width: 1280px;
-  margin: 0 auto;
-  gap: 20px;
-}
-
-.brand-logo {
-  text-align: left;
-}
-
-.brand-logo h1 {
-  font-size: 26px;
-  font-weight: 900;
-  letter-spacing: -0.8px;
-  background: linear-gradient(135deg, #ffffff 30%, #ff4d4d 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.1;
-}
-
-.brand-logo p {
-  color: #94a3b8;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-/* Mobile Dropdown Menu */
-.mobile-menu {
-  display: none;
-  background: #0f172a;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 15px 5%;
-  text-align: center;
-}
-
-.mobile-menu.active {
-  display: block;
-}
-
-.mobile-menu a {
-  color: #ff4d4d;
-  text-decoration: none;
-  display: block;
-  padding: 10px 0;
-  font-weight: 600;
-}
-
-/* Search Bar & Header Controls */
-.header-actions-center {
-  flex: 1;
-  max-width: 520px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
 
-.search-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 50px;
-  padding: 6px 14px 6px 18px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-}
-
-.search-container:focus-within {
-  border-color: #ff4d4d;
-  box-shadow: 0 0 15px rgba(255, 77, 77, 0.4);
-}
-
-.search-input {
-  width: 100%;
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 14px;
-  color: #0f172a;
-}
-
-.search-input::placeholder {
-  color: #64748b;
-}
-
-.search-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #64748b;
-  padding: 4px;
-  transition: color 0.2s ease;
-}
-
-.search-button:hover {
-  color: #ff4d4d;
-}
-
-.search-button svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-/* Action Icon Buttons */
-.icon-btn {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-  position: relative;
-  color: #e2e8f0;
-}
-
-.icon-btn:hover {
-  background: rgba(255, 77, 77, 0.2);
-  border-color: #ff4d4d;
-  color: #ff4d4d;
-  transform: translateY(-2px);
-}
-
-.icon-btn svg {
-  width: 20px;
-  height: 20px;
-  stroke-width: 2.2;
-}
-
-/* Shopping Cart Badge */
-.cart-badge {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  background: #ef4444;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 800;
-  height: 18px;
-  width: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #090d16;
-}
-
-/* Hero Content */
-.hero-content {
-  padding: 65px 20px 75px 20px;
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 77, 77, 0.15);
-  border: 1px solid rgba(255, 77, 77, 0.35);
-  color: #ff4d4d;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 16px;
-  border-radius: 50px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  margin-bottom: 20px;
-}
-
-.hero-content h2 {
-  font-size: 46px;
-  font-weight: 900;
-  letter-spacing: -1.5px;
-  line-height: 1.15;
-  margin-bottom: 16px;
-  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-content p {
-  font-size: 18px;
-  color: #cbd5e1;
-  font-weight: 400;
-  max-width: 540px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .top-nav {
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  .brand-logo {
-    order: 1;
-  }
-  .header-actions-center {
-    order: 3;
-    max-width: 100%;
-    width: 100%;
-  }
-  .hero-content h2 {
-    font-size: 32px;
-  }
-}
-
-/* Main Container */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-  padding: 50px 0;
-}
-
-.section-title {
-  font-size: 26px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  margin-bottom: 25px;
-  color: #0f172a;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* High-End Dark Tech Grid */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 30px;
-  margin-bottom: 40px;
-}
-
-.card {
-  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border: none;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.card:hover {
-  transform: translateY(-8px) scale(1.01);
-  box-shadow: 0 0 25px rgba(13, 110, 253, 0.35), 0 20px 40px rgba(0, 0, 0, 0.5);
-}
-
-.card-img-wrapper {
-  overflow: hidden;
-  height: 220px;
-  background: #020617;
-  position: relative;
-}
-
-.card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-  filter: brightness(0.9) contrast(1.05);
-}
-
-.card:hover img {
-  transform: scale(1.08);
-  filter: brightness(1) contrast(1.1);
-}
-
-.card-tag {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(8px);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  padding: 6px 12px;
-  border-radius: 50px;
-  text-transform: uppercase;
-}
-
-.card-content {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.card h3 {
-  font-size: 22px;
-  font-weight: 800;
-  margin-bottom: 8px;
-  color: #ffffff;
-  letter-spacing: -0.5px;
-}
-
-.card p {
-  color: #94a3b8;
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 18px;
-  flex-grow: 1;
-}
-
-.tech-specs {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.spec-badge {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #cbd5e1;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.card button {
-  background: linear-gradient(135deg, #0d6efd 0%, #0052cc 100%);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 14px 20px;
-  border-radius: 50px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  width: 100%;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
-  letter-spacing: 0.5px;
-}
-
-.card button:hover {
-  background: linear-gradient(135deg, #38bdf8 0%, #0d6efd 100%);
-  color: #000000;
-  border-color: #38bdf8;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
-  transform: translateY(-2px);
-}
-
-/* Yellow Accent Box */
-.about-surron-box {
-  background: linear-gradient(135deg, #fff3c4 0%, #ffc107 40%, #ffab00 100%);
-  color: #1a1a1a;
-  padding: 45px 40px;
-  border-radius: 20px;
-  margin-top: 40px;
-  box-shadow: 0 12px 35px rgba(255, 171, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  position: relative;
-  overflow: hidden;
-}
-
-.about-surron-box::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%);
-  pointer-events: none;
-}
-
-.about-surron-box h3 {
-  font-size: 32px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  margin-bottom: 20px;
-  color: #000;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.about-surron-box p {
-  font-size: 17px;
-  line-height: 1.7;
-  margin-bottom: 18px;
-  color: #2c2c2c;
-  max-width: 95%;
-}
-
-.surron-box-footer {
-  margin-top: 30px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.order-now-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: #111111;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 700;
-  padding: 16px 38px;
-  border-radius: 50px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border: none;
-  cursor: pointer;
-}
-
-.order-now-btn:hover {
-  background: #000000;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-.order-now-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-  transition: transform 0.2s ease;
-}
-
-.order-now-btn:hover svg {
-  transform: translateX(4px);
-}
-
-/* ==========================================
-   ACCESSORIES SECTION
-   ========================================== */
-.accessories-section {
-  margin-top: 50px;
-  background-color: #000000;
-  padding-bottom: 40px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
-}
-
-.header-banner {
-  width: 100%;
-  background-color: #0a0a0a;
-  color: #ffffff;
-  padding: 25px 0;
-  text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.header-banner h2 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.slider-container {
-  display: flex;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 30px 5%;
-  max-width: 1200px;
-  margin: 0 auto;
-  scrollbar-width: thin;
-  scrollbar-color: #38bdf8 rgba(255, 255, 255, 0.1);
-}
-
-.slider-container::-webkit-scrollbar {
-  height: 8px;
-}
-
-.slider-container::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-
-.slider-container::-webkit-scrollbar-thumb {
-  background: #38bdf8;
-  border-radius: 10px;
-}
-
-.accessory-card {
-  flex: 0 0 calc(33.333% - 16px);
-  min-width: 280px;
-  scroll-snap-align: start;
-  background: #ffffff;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  text-align: left;
-}
-
-.accessory-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-  border-color: #38bdf8;
-}
-
-.accessory-img-wrapper {
-  height: 200px;
-  background: #f8fafc;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.accessory-img-wrapper img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.accessory-card:hover .accessory-img-wrapper img {
-  transform: scale(1.05);
-}
-
-.discount-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #dc2626;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4);
-  z-index: 2;
-}
-
-.accessory-content {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.accessory-content h4 {
-  font-size: 18px;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 6px;
-}
-
-.accessory-content p {
-  font-size: 14px;
-  color: #475569;
-  margin-bottom: 12px;
-  flex-grow: 1;
-  line-height: 1.5;
-}
-
-.price-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-}
-
-.original-price {
-  font-size: 15px;
-  color: #ef4444;
-  text-decoration: line-through;
-  font-weight: 700;
-}
-
-.current-price {
-  font-size: 22px;
-  color: #0284c7;
-  font-weight: 800;
-}
-
-.add-cart-btn {
-  background: linear-gradient(135deg, #0d6efd 0%, #0052cc 100%);
-  color: #ffffff;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
-}
-
-.add-cart-btn:hover {
-  background: linear-gradient(135deg, #38bdf8 0%, #0d6efd 100%);
-  color: #000000;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.6);
-  transform: translateY(-2px);
-}
-
-.add-cart-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
-}
-
-.view-more-container {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.view-more-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: transparent;
-  color: #ffffff;
-  border: 2px solid #38bdf8;
-  padding: 12px 32px;
-  border-radius: 50px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.view-more-btn:hover {
-  background: #38bdf8;
-  color: #000000;
-  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-  transform: translateY(-2px);
-}
-
-/* ==========================================
-   FEATURES / VALUE PROPOSITION SECTION
-   ========================================== */
-.features-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  margin-top: 50px;
-}
-
-.feature-box {
-  background-color: #fcfbf7;
-  border: 2px solid #4a4a4a;
-  border-radius: 12px;
-  padding: 40px 25px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.feature-box:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-}
-
-.feature-icon-wrapper {
-  margin-bottom: 20px;
-}
-
-.feature-icon {
-  width: 64px;
-  height: 64px;
-  stroke: #ff2d87;
-  fill: none;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.feature-box h3 {
-  font-size: 22px;
-  font-weight: 800;
-  color: #0f172a;
-  margin-bottom: 12px;
-  letter-spacing: -0.3px;
-}
-
-.feature-box p {
-  font-size: 15px;
-  color: #475569;
-  line-height: 1.5;
-  max-width: 300px;
-}
-
-/* Modal View Styling */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #ffffff;
-  display: none;
-  z-index: 1000;
-  overflow-y: auto;
-}
-
-.modal-content {
-  background: #fff;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px 20px 60px 20px;
-  position: relative;
-  animation: slideInPage 0.3s ease-out forwards;
-}
-
-@keyframes slideInPage {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.page-nav-bar {
-  position: sticky;
-  top: 0;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  padding: 15px 0;
-  border-bottom: 1px solid #e2e8f0;
-  z-index: 10;
-  margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-}
-
-.back-btn {
-  font-size: 15px;
-  font-weight: 700;
-  color: #0d6efd;
-  cursor: pointer;
-  border: none;
-  background: rgba(13, 110, 253, 0.08);
-  padding: 10px 20px;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.2s ease;
-}
-
-.back-btn:hover {
-  background: rgba(13, 110, 253, 0.15);
-  color: #0b5ed7;
-}
-
-.product-details-header {
-  border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 20px;
-  margin-bottom: 25px;
-}
-
-.product-details-header h2 {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.options-group {
-  margin: 20px 0;
-}
-
-.options-group label {
-  font-weight: 700;
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
-  color: #334155;
-}
-
-.options-group select, .options-group input {
-  padding: 12px 16px;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  font-size: 15px;
-  outline: none;
-  transition: border-color 0.2s ease;
-  background: #f8fafc;
-}
-
-.options-group select:focus, .options-group input:focus {
-  border-color: #0d6efd;
-  background: #ffffff;
-}
-
-.btn-add-cart {
-  background: #0d6efd;
-  color: #fff;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 50px;
-  font-size: 16px;
-  cursor: pointer;
-  font-weight: 700;
-  margin-top: 15px;
-  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.25);
-  transition: all 0.2s ease;
-}
-
-.btn-add-cart:hover {
-  background: #0b5ed7;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(13, 110, 253, 0.35);
-}
-
-.perks-list {
-  list-style: none;
-  margin: 30px 0;
-  padding: 20px;
-  background: #f1f5f9;
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-}
-
-.perks-list li {
-  margin-bottom: 12px;
-  font-size: 15px;
-  line-height: 1.5;
-  color: #334155;
-}
-
-.perks-list li:last-child {
-  margin-bottom: 0;
-}
-
-.spec-list {
-  list-style: disc;
-  padding-left: 20px;
-  margin: 12px 0;
-  color: #475569;
-}
-
-.spec-list li {
-  margin-bottom: 8px;
-}
-
-/* Footer */
-footer {
-  background: #0f172a;
-  color: #94a3b8;
-  padding: 30px 20px;
-  text-align: center;
-  margin-top: 60px;
-  font-size: 14px;
-  border-top: 1px solid #1e293b;
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f8fafc;
+    color:#0f172a;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.hidden{
+    display:none !important;
+}
+
+
+/* =========================================================
+   HEADER / HERO
+========================================================= */
+
+.site-header-hero{
+    background:
+        linear-gradient(
+            180deg,
+            rgba(9,13,22,.78),
+            rgba(9,13,22,.96)
+        ),
+        url("hero-bg.jpg") center/cover no-repeat;
+
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    box-shadow:0 10px 40px rgba(0,0,0,.4);
+}
+
+.site-header-hero::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:60%;
+    height:1px;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,45,87,.7),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   NAVIGATION (Tighter gap to allow larger title)
+========================================================= */
+
+.top-nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 3%;
+    max-width:1280px;
+    margin:auto;
+    gap:8px;
+    position:relative;
+    z-index:20;
+}
+
+.brand-logo{
+    text-align:left;
+    flex-shrink:0;
+}
+
+.brand-logo h1{
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:-1px;
+    line-height:1;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff 30%,
+            #ff4d4d 100%
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.brand-logo p{
+    color:#94a3b8;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.5px;
+    text-transform:uppercase;
+    margin-top:2px;
+}
+
+
+/* =========================================================
+   ICON BUTTONS
+========================================================= */
+
+.icon-btn{
+    background:rgba(0,0,0,.3);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:50%;
+    width:42px;
+    height:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#e2e8f0;
+
+    transition:.3s;
+    flex-shrink:0;
+    position:relative;
+}
+
+.icon-btn:hover{
+    background:rgba(255,77,77,.2);
+    border-color:#ff4d4d;
+    color:#ff4d4d;
+    transform:translateY(-2px);
+}
+
+.icon-btn svg{
+    width:20px;
+    height:20px;
+    stroke-width:2.2;
+}
+
+
+/* =========================================================
+   CART BADGE
+========================================================= */
+
+.cart-badge{
+    position:absolute;
+    top:-3px;
+    right:-3px;
+
+    background:#ef4444;
+    color:white;
+
+    font-size:10px;
+    font-weight:800;
+
+    width:19px;
+    height:19px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #090d16;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.header-actions-center{
+    flex:1;
+    max-width:480px;
+
+    display:flex;
+    align-items:center;
+}
+
+.search-container{
+    width:100%;
+
+    display:flex;
+    align-items:center;
+
+    background:white;
+    border:1px solid #cbd5e1;
+
+    border-radius:50px;
+
+    padding:5px 8px 5px 16px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+    transition:.3s;
+}
+
+.search-container:focus-within{
+    border-color:#ff4d4d;
+    box-shadow:0 0 15px rgba(255,77,77,.4);
+}
+
+.search-input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+
+    color:#0f172a;
+    font-size:14px;
+}
+
+.search-input::placeholder{
+    color:#64748b;
+}
+
+.search-button{
+    background:none;
+    border:none;
+    color:#64748b;
+
+    width:34px;
+    height:34px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.search-button:hover{
+    color:#ff4d4d;
+}
+
+.search-button svg{
+    width:18px;
+    height:18px;
+    fill:currentColor;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu{
+    display:none;
+
+    background:#0f172a;
+    border-bottom:1px solid rgba(255,255,255,.1);
+
+    padding:15px 5%;
+
+    text-align:center;
+
+    position:relative;
+    z-index:15;
+}
+
+.mobile-menu.active{
+    display:block;
+}
+
+.mobile-menu a{
+    color:#fff;
+    text-decoration:none;
+
+    display:block;
+    padding:11px 0;
+
+    font-weight:600;
+}
+
+.mobile-menu a:hover{
+    color:#ff4d4d;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero-content{
+    padding:70px 20px 80px;
+
+    text-align:center;
+
+    max-width:800px;
+    margin:auto;
+
+    position:relative;
+    z-index:2;
+}
+
+.hero-tag{
+    display:inline-flex;
+    align-items:center;
+
+    gap:6px;
+
+    background:rgba(255,77,77,.15);
+    border:1px solid rgba(255,77,77,.35);
+
+    color:#ff4d4d;
+
+    font-size:12px;
+    font-weight:700;
+
+    padding:6px 16px;
+
+    border-radius:50px;
+
+    text-transform:uppercase;
+    letter-spacing:.8px;
+
+    margin-bottom:20px;
+}
+
+.hero-content h2{
+    font-size:46px;
+    font-weight:900;
+
+    letter-spacing:-1.5px;
+    line-height:1.15;
+
+    margin-bottom:16px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff,
+            #cbd5e1
+        );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero-content p{
+    font-size:18px;
+    color:#cbd5e1;
+
+    max-width:540px;
+    margin:auto;
+
+    line-height:1.6;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container{
+    width:90%;
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:50px 0;
+}
+
+.section-title{
+    font-size:26px;
+    font-weight:800;
+
+    margin-bottom:25px;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(260px,1fr)
+        );
+
+    gap:30px;
+}
+
+
+/* =========================================================
+   PRODUCT CARD
+========================================================= */
+
+.card{
+    background:
+        linear-gradient(
+            145deg,
+            #1e293b,
+            #0f172a
+        );
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.3);
+
+    transition:.4s;
+
+    display:flex;
+    flex-direction:column;
+
+    position:relative;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+        0 0 25px rgba(13,110,253,.35),
+        0 20px 40px rgba(0,0,0,.5);
+}
+
+.card-img-wrapper{
+    height:220px;
+
+    background:#020617;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.card img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+
+    filter:
+        brightness(.9)
+        contrast(1.05);
+}
+
+.card:hover img{
+    transform:scale(1.08);
+
+    filter:
+        brightness(1)
+        contrast(1.1);
+}
+
+.card-tag{
+    position:absolute;
+
+    top:15px;
+    right:15px;
+
+    background:rgba(15,23,42,.8);
+
+    color:#38bdf8;
+
+    border:1px solid rgba(56,189,248,.3);
+
+    font-size:11px;
+    font-weight:800;
+
+    padding:6px 12px;
+
+    border-radius:50px;
+
+    text-transform:uppercase;
+
+    z-index:2;
+}
+
+.card-content{
+    padding:24px;
+
+    display:flex;
+    flex-direction:column;
+
+    flex-grow:1;
+}
+
+.card h3{
+    font-size:22px;
+    color:white;
+
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#94a3b8;
+
+    font-size:14px;
+    line-height:1.6;
+
+    margin-bottom:18px;
+
+    flex-grow:1;
+}
+
+.tech-specs{
+    display:flex;
+    gap:8px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:20px;
+}
+
+.spec-badge{
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    color:#cbd5e1;
+
+    font-size:12px;
+    font-weight:600;
+
+    padding:4px 10px;
+
+    border-radius:6px;
+}
+
+.card button{
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #0052cc
+        );
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,.2);
+
+    padding:14px 20px;
+
+    border-radius:50px;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    width:100%;
+
+    transition:.3s;
+}
+
+.card button:hover{
+    background:
+        linear-gradient(
+            135deg,
+            #38bdf8,
+            #0d6efd
+        );
+
+    color:#000;
+
+    transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+
+.about-surron-box{
+    background:
+        linear-gradient(
+            135deg,
+            #fff3c4,
+            #ffc107 40%,
+            #ffab00
+        );
+
+    color:#1a1a1a;
+
+    padding:45px 40px;
+
+    border-radius:20px;
+
+    margin-top:40px;
+
+    box-shadow:
+        0 12px 35px rgba(255,171,0,.25);
+
+    position:relative;
+    overflow:hidden;
+}
+
+.about-surron-box h3{
+    font-size:32px;
+
+    margin-bottom:20px;
+}
+
+.about-surron-box p{
+    font-size:17px;
+
+    line-height:1.7;
+
+    margin-bottom:18px;
+}
+
+.surron-box-footer{
+    margin-top:30px;
+
+    padding-top:20px;
+
+    border-top:1px solid rgba(0,0,0,.1);
+}
+
+.order-now-btn{
+    display:inline-flex;
+
+    align-items:center;
+    gap:10px;
+
+    background:#111;
+    color:white;
+
+    border:none;
+
+    font-size:18px;
+    font-weight:700;
+
+    padding:16px 38px;
+
+    border-radius:50px;
+
+    transition:.3s;
+}
+
+.order-now-btn:hover{
+    background:#000;
+
+    transform:translateY(-3px);
+}
+
+
+/* =========================================================
+   ACCESSORIES
+========================================================= */
+
+.accessories-section{
+    margin-top:50px;
+
+    background:#000;
+
+    padding-bottom:40px;
+}
+
+.header-banner{
+    background:#0a0a0a;
+
+    color:white;
+
+    padding:25px 0;
+
+    text-align:center;
+
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.slider-container{
+    display:flex;
+
+    gap:24px;
+
+    overflow-x:auto;
+
+    padding:30px 5%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    scroll-snap-type:x mandatory;
+}
+
+.accessory-card{
+    flex:
+        0 0
+        calc(33.333% - 16px);
+
+    min-width:280px;
+
+    background:white;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    display:flex;
+    flex-direction:column;
+
+    transition:.3s;
+}
+
+.accessory-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.35);
+}
+
+.accessory-img-wrapper{
+    height:200px;
+
+    background:#f8fafc;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.accessory-img-wrapper img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.4s;
+}
+
+.accessory-card:hover img{
+    transform:scale(1.05);
+}
+
+.discount-badge{
+    position:absolute;
+
+    top:12px;
+    left:12px;
+
+    background:#dc2626;
+    color:white;
+
+    font-size:12px;
+    font-weight:800;
+
+    padding:4px 10px;
+
+    border-radius:50px;
+
+    z-index:2;
+}
+
+.accessory-content{
+    padding:20px;
+
+    display:flex;
+    flex-direction:column;
+
+    flex-grow:1;
+}
+
+.accessory-content h4{
+    font-size:18px;
+
+    color:#0f172a;
+
+    margin-bottom:6px;
+}
+
+.accessory-content p{
+    font-size:14px;
+
+    color:#475569;
+
+    margin-bottom:12px;
+
+    flex-grow:1;
+}
+
+.price-container{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:16px;
+}
+
+.original-price{
+    color:#ef4444;
+
+    text-decoration:line-through;
+
+    font-weight:700;
+}
+
+.current-price{
+    font-size:22px;
+
+    color:#0284c7;
+
+    font-weight:800;
+}
+
+.add-cart-btn{
+    background:
+        linear-gradient(
+            135deg,
+            #0d6efd,
+            #0052cc
+        );
+
+    color:white;
+
+    border:none;
+
+    padding:12px 18px;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    width:100%;
+}
+
+.view-more-container{
+    text-align:center;
+
+    margin-top:20px;
+}
+
+.view-more-btn{
+    background:transparent;
+
+    color:white;
+
+    border:2px solid #38bdf8;
+
+    padding:12px 32px;
+
+    border-radius:50px;
+
+    font-weight:700;
+}
+
+.view-more-btn:hover{
+    background:#38bdf8;
+
+    color:#000;
+}
+
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.features-section{
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px,1fr)
+        );
+
+    gap:24px;
+
+    margin-top:50px;
+}
+
+.feature-box{
+    background:#fcfbf7;
+
+    border:2px solid #4a4a4a;
+
+    border-radius:12px;
+
+    padding:40px 25px;
+
+    text-align:center;
+
+    transition:.3s;
+}
+
+.feature-box:hover{
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.08);
 }
+
+.feature-icon-wrapper{
+    font-size:32px;
+}
+
+.feature-box h3{
+    font-size:22px;
+
+    margin:20px 0 12px;
+}
+
+.feature-box p{
+    font-size:15px;
+
+    color:#475569;
+}
+
+
+/* =========================================================
+   MODAL SYSTEM
+========================================================= */
+
+.modal-overlay{
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    background:
+        rgba(0,0,0,.55);
+
+    backdrop-filter:blur(5px);
+
+    display:none;
+
+    z-index:1000;
+
+    overflow-y:auto;
+
+    padding:20px;
+}
+
+.modal-overlay.active{
+    display:block;
+}
+
+.modal-content{
+    background:white;
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:20px auto;
+
+    border-radius:20px;
+
+    padding:20px 20px 60px;
+
+    animation:
+        modalIn .25s ease;
+}
+
+@keyframes modalIn{
+    from{
+        transform:translateY(30px);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.page-nav-bar{
+    position:sticky;
+
+    top:0;
+
+    background:rgba(255,255,255,.92);
+
+    backdrop-filter:blur(10px);
+
+    padding:15px 0;
+
+    border-bottom:1px solid #e2e8f0;
+
+    z-index:10;
+
+    margin-bottom:25px;
+}
+
+.back-btn{
+    font-size:15px;
+    font-weight:700;
+
+    color:#0d6efd;
+
+    border:none;
+
+    background:#eff6ff;
+
+    padding:10px 20px;
+
+    border-radius:50px;
+}
+
+.product-details-header{
+    border-bottom:1px solid #e2e8f0;
+
+    padding-bottom:20px;
+
+    margin-bottom:25px;
+}
+
+.product-details-header h2{
+    font-size:28px;
+}
+
+.product-main-image{
+    width:100%;
+
+    max-height:400px;
+
+    object-fit:cover;
+
+    border-radius:16px;
+
+    margin-bottom:25px;
+}
+
+.options-group{
+    margin:20px 0;
+}
+
+.options-group label{
+    font-weight:700;
+
+    display:block;
+
+    margin-bottom:8px;
+}
+
+.options-group select,
+.options-group input{
+    padding:12px 16px;
+
+    border:1px solid #cbd5e1;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    outline:none;
+
+    background:#f8fafc;
+
+    width:100%;
+}
+
+.quantity-input{
+    max-width:100px !important;
+}
+
+.btn-add-cart,
+.btn-proceed-checkout{
+    width:100%;
+
+    border:none;
+
+    color:white;
+
+    padding:16px 25px;
+
+    border-radius:50px;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    margin-top:15px;
+}
+
+.btn-add-cart{
+    background:#0d6efd;
+}
+
+.btn-add-cart:hover{
+    background:#0b5ed7;
+}
+
+.perks-list{
+    list-style:none;
+
+    margin:30px 0;
+
+    padding:20px;
+
+    background:#f1f5f9;
+
+    border-radius:16px;
+}
+
+.perks-list li{
+    margin-bottom:12px;
+
+    color:#334155;
+    font-weight:600;
+}
+
+.perks-list li:last-child{
+    margin-bottom:0;
+}
+
+/* Specific styling for item description block under perks */
+.perks-item-description{
+    margin-top:15px;
+    padding-top:15px;
+    border-top:1px solid #cbd5e1;
+    color:#475569;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.perks-item-description h4{
+    color:#0f172a;
+    font-size:15px;
+    margin-bottom:6px;
+}
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+.cart-items{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    margin-bottom:25px;
+}
+
+.cart-item{
+    display:grid;
+
+    grid-template-columns:
+        80px
+        1fr
+        auto;
+
+    gap:15px;
+
+    align-items:center;
+
+    padding:15px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:14px;
+
+    background:#fff;
+}
+
+.cart-item img{
+    width:80px;
+    height:80px;
+
+    object-fit:cover;
+
+    border-radius:10px;
+}
+
+.cart-item h4{
+    margin-bottom:5px;
+}
+
+.cart-item small{
+    color:#64748b;
+}
+
+.cart-controls{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin-top:8px;
+}
+
+.qty-btn{
+    width:30px;
+    height:30px;
+
+    border:none;
+
+    background:#e2e8f0;
+
+    border-radius:7px;
+
+    font-weight:800;
+}
+
+.remove-btn{
+    margin-top:8px;
+
+    background:none;
+
+    border:none;
+
+    color:#dc2626;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.cart-price{
+    font-weight:800;
+
+    white-space:nowrap;
+}
+
+.empty-cart{
+    text-align:center;
+
+    padding:50px 20px;
+
+    color:#64748b;
+}
+
+.empty-cart-icon{
+    font-size:50px;
+
+    margin-bottom:10px;
+}
+
+.summary-card{
+    background:#f8fafc;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:16px;
+
+    padding:24px;
+
+    margin:20px 0 30px;
+}
+
+.summary-item{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    padding:12px 0;
+
+    border-bottom:1px solid #cbd5e1;
+}
+
+.summary-item:last-child{
+    border-bottom:none;
+}
+
+.summary-total{
+    font-size:20px;
+
+    font-weight:800;
+}
+
+.btn-proceed-checkout{
+    background:#16a34a;
+
+    box-shadow:
+        0 6px 20px rgba(22,163,74,.3);
+}
+
+.btn-proceed-checkout:hover{
+    background:#15803d;
+}
+
+
+/* =========================================================
+   CHECKOUT FORM
+========================================================= */
+
+.checkout-form{
+    display:grid;
+
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:7px;
+}
+
+.form-group label{
+    font-weight:700;
+
+    font-size:14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+
+    padding:13px 15px;
+
+    border:1px solid #cbd5e1;
+
+    border-radius:10px;
+
+    outline:none;
+
+    background:#f8fafc;
+}
+
+.form-group textarea{
+    min-height:100px;
+
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#0d6efd;
+
+    background:#fff;
+}
+
+.checkout-message{
+    display:none;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    background:#dcfce7;
+
+    color:#166534;
+
+    font-weight:700;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#0f172a;
+
+    color:#94a3b8;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    margin-top:60px;
+
+    font-size:14px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(min-width:1024px){
+    .brand-logo h1{
+        font-size:44px;
+    }
+}
+
+@media(max-width:768px){
+
+    .top-nav{
+        flex-wrap:wrap;
+        gap:12px;
+    }
+
+    .brand-logo{
+        order:1;
+    }
+
+    #menuToggleBtn{
+        order:0;
+    }
+
+    .header-actions-center{
+        order:3;
+
+        width:100%;
+
+        max-width:none;
+    }
+
+    .hero-content h2{
+        font-size:34px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+    }
+
+    .container{
+        width:92%;
+
+        padding:35px 0;
+    }
+
+    .about-surron-box{
+        padding:30px 22px;
+    }
+
+    .about-surron-box h3{
+        font-size:27px;
+    }
+
+    .accessory-card{
+        flex:0 0 85%;
+    }
+
+    .cart-item{
+        grid-template-columns:
+            65px
+            1fr;
+    }
+
+    .cart-item img{
+        width:65px;
+        height:65px;
+    }
+
+    .cart-price{
+        grid-column:2;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .brand-logo h1{
+        font-size:28px;
+    }
+
+    .brand-logo p{
+        font-size:9px;
+    }
+
+    .hero-content{
+        padding:55px 15px 65px;
+    }
+
+    .hero-content h2{
+        font-size:29px;
+    }
+
+    .section-title{
+        font-size:22px;
+    }
+
+    .card-content{
+        padding:20px;
+    }
+
+    .modal-overlay{
+        padding:0;
+    }
+
+    .modal-content{
+        min-height:100vh;
+
+        margin:0;
+
+        border-radius:0;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- HEADER & HERO SECTION -->
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
 <header class="site-header-hero">
-  <nav class="top-nav">
-    <button class="icon-btn" id="menuToggleBtn" aria-label="Toggle menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <line x1="4" y1="6" x2="20" y2="6"></line>
-        <line x1="4" y1="12" x2="20" y2="12"></line>
-        <line x1="4" y1="18" x2="20" y2="18"></line>
-      </svg>
+
+<nav class="top-nav">
+
+    <!-- MENU -->
+    <button
+        class="icon-btn"
+        id="menuToggleBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+        >
+            <line x1="4" y1="6" x2="20" y2="6"/>
+            <line x1="4" y1="12" x2="20" y2="12"/>
+            <line x1="4" y1="18" x2="20" y2="18"/>
+        </svg>
+
     </button>
 
+
+    <!-- LOGO -->
     <div class="brand-logo">
-      <h1>BIKE WORLD</h1>
-      <p>Performance E-Mobility</p>
+
+        <h1>BIKE WORLD</h1>
+
+        <p>Performance E-Mobility</p>
+
     </div>
 
+
+    <!-- SEARCH -->
     <div class="header-actions-center">
-      <div class="search-container">
-        <input type="text" id="searchInput" class="search-input" placeholder="Search bikes, parts, accessories..." aria-label="Search store">
-        <button class="search-button" id="searchBtn" aria-label="Search">
-          <svg viewBox="0 0 24 24">
-            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-          </svg>
-        </button>
-      </div>
+
+        <div class="search-container">
+
+            <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search bikes, parts, accessories..."
+                aria-label="Search store"
+            >
+
+            <button
+                class="search-button"
+                id="searchBtn"
+                aria-label="Search"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="
+                        M15.5 14h-.79l-.28-.27
+                        C15.41 12.59 16 11.11 16 9.5
+                        16 5.91 13.09 3 9.5 3
+                        S3 5.91 3 9.5
+                        5.91 16 9.5 16
+                        c1.61 0 3.09-.59 4.23-1.57
+                        l.27.28v.79l5 4.99
+                        L20.49 19l-4.99-5z
+                        M9.5 14
+                        C7.01 14 5 11.99 5 9.5
+                        S7.01 5 9.5 5
+                        14 7.01 14 9.5
+                        11.99 14 9.5 14z
+                    "/>
+
+                </svg>
+
+            </button>
+
+        </div>
+
     </div>
 
-    <button class="icon-btn" aria-label="User profile">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="12" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+
+    <!-- PROFILE -->
+    <button
+        class="icon-btn"
+        id="profileBtn"
+        aria-label="User profile"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+        >
+
+            <path
+                d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                stroke-linecap="round"
+            />
+
+            <circle
+                cx="12"
+                cy="7"
+                r="4"
+            />
+
+        </svg>
+
     </button>
 
-    <button class="icon-btn" aria-label="View shopping cart">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke-linecap="round" stroke-linejoin="round"/>
-        <line x1="3" y1="6" x2="21" y2="6" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M16 10a4 4 0 01-8 0" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span class="cart-badge" id="cartCount">0</span>
-    </button>
-  </nav>
 
-  <div class="mobile-menu" id="mobileMenu">
+    <!-- CART -->
+    <button
+        class="icon-btn"
+        id="cartBtn"
+        aria-label="Shopping cart"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+        >
+
+            <path
+                d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+
+            <line
+                x1="3"
+                y1="6"
+                x2="21"
+                y2="6"
+            />
+
+            <path
+                d="M16 10a4 4 0 01-8 0"
+            />
+
+        </svg>
+
+        <span
+            class="cart-badge"
+            id="cartCount"
+        >0</span>
+
+    </button>
+
+</nav>
+
+
+<!-- MOBILE MENU -->
+
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+>
+
     <a href="#categories">Bikes</a>
-    <a href="#accessories">Accessories</a>
-    <a href="#about">About SurRon</a>
-  </div>
 
-  <div class="hero-content">
-    <div class="hero-tag">⚡ Next-Gen Electric Mobility</div>
-    <h2>Explore Every Ride</h2>
-    <p>Discover high-performance electric motorcycles built for extreme off-road trails and ultimate urban mobility.</p>
-  </div>
+    <a href="#accessories">Accessories</a>
+
+    <a href="#about">About SurRon</a>
+
+</div>
+
+
+<!-- HERO -->
+
+<div class="hero-content">
+
+    <div class="hero-tag">
+        ⚡ Next-Gen Electric Mobility
+    </div>
+
+    <h2>
+        Explore Every Ride
+    </h2>
+
+    <p>
+        Discover high-performance electric motorcycles
+        built for extreme off-road trails and ultimate
+        urban mobility.
+    </p>
+
+</div>
+
 </header>
 
+
+
+<!-- =========================================================
+     BIKES
+========================================================= -->
+
 <div class="container">
-  <h2 class="section-title" id="categories">⚡ Featured Bike Categories</h2>
 
-  <div class="grid">
-    <!-- Light Bee -->
-    <div class="card">
-      <div class="card-img-wrapper">
-        <span class="card-tag">Agile Dirt</span>
-        <img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg" alt="Light Bee">
-      </div>
-      <div class="card-content">
-        <h3>Light Bee X</h3>
-        <p>High-performance lightweight electric dirt bike built for maximum trail maneuverability.</p>
-        <div class="tech-specs">
-          <span class="spec-badge">⚡ 6kW Peak</span>
-          <span class="spec-badge">💨 75 km/h</span>
+<h2
+    class="section-title"
+    id="categories"
+>
+    ⚡ Featured Bike Categories
+</h2>
+
+
+<div
+    class="grid"
+    id="bikeGrid"
+>
+
+    <!-- LIGHT BEE -->
+
+    <div
+        class="card product-card"
+        data-name="Light Bee X"
+    >
+
+        <div class="card-img-wrapper">
+
+            <span class="card-tag">
+                Agile Dirt
+            </span>
+
+            <img
+                src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg"
+                alt="Surron Light Bee X"
+                loading="lazy"
+            >
+
         </div>
-        <button onclick="openModal('lightBeeModal')">View Details</button>
-      </div>
+
+        <div class="card-content">
+
+            <h3>
+                Light Bee X
+            </h3>
+
+            <p>
+                High-performance lightweight electric
+                dirt bike built for maximum trail
+                maneuverability.
+            </p>
+
+            <div class="tech-specs">
+
+                <span class="spec-badge">
+                    ⚡ 6kW Peak
+                </span>
+
+                <span class="spec-badge">
+                    💨 75 km/h
+                </span>
+
+            </div>
+
+            <button
+                onclick="openProduct('lightBee')"
+            >
+                View Details
+            </button>
+
+        </div>
+
     </div>
 
-    <!-- Storm Bee -->
-    <div class="card">
-      <div class="card-img-wrapper">
-        <span class="card-tag">Full-Size MX</span>
-        <img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg" alt="Storm Bee">
-      </div>
-      <div class="card-content">
-        <h3>Storm Bee</h3>
-        <p>Full-size electric off-road motorcycle equipped with maximum power and liquid cooling.</p>
-        <div class="tech-specs">
-          <span class="spec-badge">⚡ 22.5kW Peak</span>
-          <span class="spec-badge">💨 110 km/h</span>
+
+    <!-- STORM BEE -->
+
+    <div
+        class="card product-card"
+        data-name="Storm Bee"
+    >
+
+        <div class="card-img-wrapper">
+
+            <span class="card-tag">
+                Full-Size MX
+            </span>
+
+            <img
+                src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg"
+                alt="Surron Storm Bee"
+                loading="lazy"
+            >
+
         </div>
-        <button onclick="openModal('stormBeeModal')">View Details</button>
-      </div>
+
+        <div class="card-content">
+
+            <h3>
+                Storm Bee
+            </h3>
+
+            <p>
+                Full-size electric off-road motorcycle
+                equipped with maximum power and liquid cooling.
+            </p>
+
+            <div class="tech-specs">
+
+                <span class="spec-badge">
+                    ⚡ 22.5kW Peak
+                </span>
+
+                <span class="spec-badge">
+                    💨 110 km/h
+                </span>
+
+            </div>
+
+            <button
+                onclick="openProduct('stormBee')"
+            >
+                View Details
+            </button>
+
+        </div>
+
     </div>
 
-    <!-- Ultra Bee -->
-    <div class="card">
-      <div class="card-img-wrapper">
-        <span class="card-tag">Pro Performance</span>
-        <img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg" alt="Ultra Bee">
-      </div>
-      <div class="card-content">
-        <h3>Ultra Bee HP</h3>
-        <p>Mid-sized, highly versatile off-road electric motorcycle featuring 21kW Turbo mode.</p>
-        <div class="tech-specs">
-          <span class="spec-badge">⚡ 21kW Peak</span>
-          <span class="spec-badge">💨 95 km/h</span>
+
+    <!-- ULTRA BEE -->
+
+    <div
+        class="card product-card"
+        data-name="Ultra Bee HP"
+    >
+
+        <div class="card-img-wrapper">
+
+            <span class="card-tag">
+                Pro Performance
+            </span>
+
+            <img
+                src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg"
+                alt="Surron Ultra Bee"
+                loading="lazy"
+            >
+
         </div>
-        <button onclick="openModal('ultraBeeModal')">View Details</button>
-      </div>
+
+        <div class="card-content">
+
+            <h3>
+                Ultra Bee HP
+            </h3>
+
+            <p>
+                Mid-sized, highly versatile off-road
+                electric motorcycle featuring Turbo mode.
+            </p>
+
+            <div class="tech-specs">
+
+                <span class="spec-badge">
+                    ⚡ 21kW Peak
+                </span>
+
+                <span class="spec-badge">
+                    💨 95 km/h
+                </span>
+
+            </div>
+
+            <button
+                onclick="openProduct('ultraBee')"
+            >
+                View Details
+            </button>
+
+        </div>
+
     </div>
 
-    <!-- Hyper Bee -->
-    <div class="card">
-      <div class="card-img-wrapper">
-        <span class="card-tag">Youth Mini</span>
-        <img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp" alt="Hyper Bee">
-      </div>
-      <div class="card-content">
-        <h3>Hyper Bee</h3>
-        <p>Compact youth electric dirt bike designed for aggressive thrills and mini-pit racing.</p>
-        <div class="tech-specs">
-          <span class="spec-badge">⚡ 5kW Peak</span>
-          <span class="spec-badge">💨 50 km/h</span>
-        </div>
-        <button onclick="openModal('hyperBeeModal')">View Details</button>
-      </div>
-    </div>
-  </div>
 
-  <!-- Featured Yellow Box -->
-  <div class="about-surron-box" id="about">
-    <h3>⚡ About SurRon Bikes</h3>
-    <p>SurRon bikes are high-performance electric off-road motorcycles designed to deliver power, speed, and reliability while producing zero emissions. Known for their lightweight construction, instant torque, and low-maintenance electric drivetrain, SurRon bikes have become a popular choice among trail riders, adventure enthusiasts, and electric mobility fans around the world.</p>
-    <p>Whether you're looking for a bike for recreational riding, off-road exploration, or thrilling performance, SurRon offers a range of models to suit different riding styles and experience levels. With advanced battery technology, durable engineering, and responsive handling, SurRon continues to redefine the future of electric off-road riding.</p>
-    <p>Experience the next generation of riding with SurRon—where innovation meets performance.</p>
-    
+    <!-- HYPER BEE -->
+
+    <div
+        class="card product-card"
+        data-name="Hyper Bee"
+    >
+
+        <div class="card-img-wrapper">
+
+            <span class="card-tag">
+                Youth Mini
+            </span>
+
+            <img
+                src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp"
+                alt="Surron Hyper Bee"
+                loading="lazy"
+            >
+
+        </div>
+
+        <div class="card-content">
+
+            <h3>
+                Hyper Bee
+            </h3>
+
+            <p>
+                Compact electric dirt bike designed for
+                younger riders and mini-pit racing.
+            </p>
+
+            <div class="tech-specs">
+
+                <span class="spec-badge">
+                    ⚡ 5kW Peak
+                </span>
+
+                <span class="spec-badge">
+                    💨 50 km/h
+                </span>
+
+            </div>
+
+            <button
+                onclick="openProduct('hyperBee')"
+            >
+                View Details
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<div
+    class="about-surron-box"
+    id="about"
+>
+
+    <h3>
+        ⚡ About SurRon Bikes
+    </h3>
+
+    <p>
+        SurRon bikes are high-performance electric
+        off-road motorcycles designed to deliver
+        power, speed, and reliability while producing
+        zero emissions.
+    </p>
+
+    <p>
+        Known for lightweight construction, instant
+        torque and electric drivetrains, SurRon bikes
+        have become popular among trail riders,
+        adventure enthusiasts and electric mobility fans.
+    </p>
+
+    <p>
+        Experience the next generation of riding with
+        SurRon — where innovation meets performance.
+    </p>
+
     <div class="surron-box-footer">
-      <button class="order-now-btn" onclick="addToCart(1, 'SurRon Bike Order')">
-        Order Now
-        <svg viewBox="0 0 24 24">
-          <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+
+        <button
+            class="order-now-btn"
+            onclick="openProduct('lightBee')"
+        >
+            Order Now →
+        </button>
+
     </div>
-  </div>
+
 </div>
 
-<!-- Accessories Section -->
-<div class="accessories-section" id="accessories">
-  <div class="header-banner">
-    <h2>🔧 Accessories</h2>
-  </div>
-  
-  <div class="slider-container">
-    <div class="accessory-card">
-      <div class="accessory-img-wrapper">
-        <span class="discount-badge">17% OFF</span>
-        <img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp" alt="Light Bee Charger 10A">
-      </div>
-      <div class="accessory-content">
-        <h4>Light Bee Charger 10A</h4>
-        <p>High-efficiency 10A fast charger designed specifically for rapid powering of your Light Bee battery.</p>
-        <div class="price-container">
-          <span class="original-price">$300</span>
-          <span class="current-price">$250</span>
-        </div>
-        <button class="add-cart-btn" onclick="addToCart(1, 'Light Bee Charger 10A')">
-          <svg viewBox="0 0 24 24">
-            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-          </svg>
-          Add to Cart
-        </button>
-      </div>
-    </div>
-
-    <div class="accessory-card">
-      <div class="accessory-img-wrapper">
-        <span class="discount-badge">18% OFF</span>
-        <img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-s-lithium-battery-48v20ah-851993_798x798.webp" alt="Light Bee Lithium Battery 48V 20Ah">
-      </div>
-      <div class="accessory-content">
-        <h4>Lithium Battery 48V 20Ah</h4>
-        <p>Genuine high-capacity replacement battery pack delivering maximum range and dependable output.</p>
-        <div class="price-container">
-          <span class="original-price">$550</span>
-          <span class="current-price">$450</span>
-        </div>
-        <button class="add-cart-btn" onclick="addToCart(1, 'Lithium Battery 48V 20Ah')">
-          <svg viewBox="0 0 24 24">
-            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-          </svg>
-          Add to Cart
-        </button>
-      </div>
-    </div>
-
-    <div class="accessory-card">
-      <div class="accessory-img-wrapper">
-        <span class="discount-badge">20% OFF</span>
-        <img src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp" alt="Light Bee 16/19 Wheel Rim Kit KKE">
-      </div>
-      <div class="accessory-content">
-        <h4>16/19 Wheel Rim Kit KKE</h4>
-        <p>Heavy-duty KKE wheel rim kit upgraded for rugged performance across punishing off-road terrain.</p>
-        <div class="price-container">
-          <span class="original-price">$500</span>
-          <span class="current-price">$400</span>
-        </div>
-        <button class="add-cart-btn" onclick="addToCart(1, '16/19 Wheel Rim Kit KKE')">
-          <svg viewBox="0 0 24 24">
-            <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
-          </svg>
-          Add to Cart
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="view-more-container">
-    <button class="view-more-btn">View More</button>
-  </div>
 </div>
+
+
+
+<!-- =========================================================
+     ACCESSORIES
+========================================================= -->
+
+<div
+    class="accessories-section"
+    id="accessories"
+>
+
+    <div class="header-banner">
+
+        <h2>
+            🔧 Accessories
+        </h2>
+
+    </div>
+
+
+    <div
+        class="slider-container"
+        id="accessorySlider"
+    >
+
+        <!-- ACCESSORY 1 -->
+
+        <div
+            class="accessory-card"
+            data-name="Light Bee Charger 10A"
+        >
+
+            <div class="accessory-img-wrapper">
+
+                <span class="discount-badge">
+                    17% OFF
+                </span>
+
+                <img
+                    src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp"
+                    alt="Light Bee Charger"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div class="accessory-content">
+
+                <h4>
+                    Light Bee Charger 10A
+                </h4>
+
+                <p>
+                    High-efficiency charger designed
+                    for the Light Bee battery.
+                </p>
+
+                <div class="price-container">
+
+                    <span class="original-price">
+                        $300
+                    </span>
+
+                    <span class="current-price">
+                        $250
+                    </span>
+
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('charger')"
+                >
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACCESSORY 2 -->
+
+        <div
+            class="accessory-card"
+            data-name="Lithium Battery 48V 20Ah"
+        >
+
+            <div class="accessory-img-wrapper">
+
+                <span class="discount-badge">
+                    18% OFF
+                </span>
+
+                <img
+                    src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-s-lithium-battery-48v20ah-851993_798x798.webp"
+                    alt="Lithium Battery"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div class="accessory-content">
+
+                <h4>
+                    Lithium Battery 48V 20Ah
+                </h4>
+
+                <p>
+                    High-capacity replacement battery
+                    designed for dependable output.
+                </p>
+
+                <div class="price-container">
+
+                    <span class="original-price">
+                        $550
+                    </span>
+
+                    <span class="current-price">
+                        $450
+                    </span>
+
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('battery')"
+                >
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACCESSORY 3 -->
+
+        <div
+            class="accessory-card"
+            data-name="16/19 Wheel Rim Kit KKE"
+        >
+
+            <div class="accessory-img-wrapper">
+
+                <span class="discount-badge">
+                    20% OFF
+                </span>
+
+                <img
+                    src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp"
+                    alt="Wheel Rim Kit"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div class="accessory-content">
+
+                <h4>
+                    16/19 Wheel Rim Kit KKE
+                </h4>
+
+                <p>
+                    Heavy-duty wheel rim kit designed
+                    for rugged off-road riding.
+                </p>
+
+                <div class="price-container">
+
+                    <span class="original-price">
+                        $500
+                    </span>
+
+                    <span class="current-price">
+                        $400
+                    </span>
+
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addToCart('wheelKit')"
+                >
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- HIDDEN ACCESSORY -->
+
+        <div
+            class="accessory-card extra-accessory hidden"
+            data-name="Premium Handlebar"
+        >
+
+            <div class="accessory-img-wrapper">
+
+                <span class="discount-badge">
+                    NEW
+                </span>
+
+                <img
+                    src="https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp"
+                    alt="Premium Handlebar"
+                    loading="lazy"
+                >
+
+            </div>
+
+            <div class="accessory-content">
+
+                <h4>
+                    Premium Handlebar
+                </h4>
+
+                <p>
+                    Premium replacement handlebar for
+                    improved control.
+                </p>
+
+                <div class="price-container">
+
+                    <span class="current-price">
+                        $180
+                    </span>
+
+                </div>
+
+                <button
+                    class="add-cart-btn"
+                    onclick="addCustomItem(
+                        'Premium Handlebar',
+                        180,
+                        this.closest('.accessory-card').querySelector('img').src
+                    )"
+                >
+                    🛒 Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="view-more-container">
+
+        <button
+            class="view-more-btn"
+            id="viewMoreBtn"
+        >
+            View More
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     FEATURES
+========================================================= -->
 
 <div class="container">
-  <!-- FEATURES SECTION -->
-  <div class="features-section">
-    <div class="feature-box">
-      <div class="feature-icon-wrapper">
-        <svg class="feature-icon" viewBox="0 0 24 24">
-          <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
-          <path d="M16 8h4l3 3v5h-7V8z"/>
-          <circle cx="5.5" cy="18.5" r="2.5"/>
-          <circle cx="18.5" cy="18.5" r="2.5"/>
-          <path d="M9 7h3"/>
-        </svg>
-      </div>
-      <h3>Fastest Delivery</h3>
-      <p>Fast and free delivery across the USA with real-time order tracking.</p>
-    </div>
+
+<div class="features-section">
 
     <div class="feature-box">
-      <div class="feature-icon-wrapper">
-        <svg class="feature-icon" viewBox="0 0 24 24">
-          <path d="M6 3h12l4 6-10 12L2 9l4-6z"/>
-          <path d="M11 3l1 18"/>
-          <path d="M2 9h20"/>
-        </svg>
-      </div>
-      <h3>Pay In Installments</h3>
-      <p>Flexible payment plans available—split your ride into easy monthly installments.</p>
+
+        <div class="feature-icon-wrapper">
+            🚚
+        </div>
+
+        <h3>
+            Fast Delivery
+        </h3>
+
+        <p>
+            Fast delivery options with order tracking.
+        </p>
+
     </div>
+
 
     <div class="feature-box">
-      <div class="feature-icon-wrapper">
-        <svg class="feature-icon" viewBox="0 0 24 24">
-          <rect x="2" y="5" width="20" height="14" rx="3" ry="3"/>
-          <rect x="15" y="11" width="5" height="4" rx="1" ry="1"/>
-          <path d="M2 10h20"/>
-        </svg>
-      </div>
-      <h3>Secure Payments</h3>
-      <p>Multiple encrypted payment options, flexible financing, and crypto discounts.</p>
+
+        <div class="feature-icon-wrapper">
+            💳
+        </div>
+
+        <h3>
+            Flexible Payments
+        </h3>
+
+        <p>
+            Multiple payment options can be connected
+            to your checkout.
+        </p>
+
     </div>
-  </div>
+
+
+    <div class="feature-box">
+
+        <div class="feature-icon-wrapper">
+            🔒
+        </div>
+
+        <h3>
+            Secure Checkout
+        </h3>
+
+        <p>
+            Your checkout interface is designed with
+            security and usability in mind.
+        </p>
+
+    </div>
+
 </div>
 
-<!-- MODALS -->
-
-<!-- Light Bee Details Modal -->
-<div class="modal-overlay" id="lightBeeModal">
-  <div class="modal-content">
-    <div class="page-nav-bar">
-      <button class="back-btn" onclick="closeModal('lightBeeModal')">← Back to Store</button>
-    </div>
-    <div class="product-details-header">
-      <h2>SURRON LIGHT BEE X</h2>
-      <p style="color:#64748b; font-size:14px; margin-top:4px;">Be the first to leave a review.</p>
-    </div>
-    <p>The SURRON LIGHT BEE X offers 60V of power from a removable 32AH Panasonic Lithium ion battery pack with 4-piston hydraulic disc brakes Front and Rear. Climbing ability of over 45 degree and up to 100km of range and a short 2.5-3.5 hour charge time.</p>
-    <p style="margin-top:10px;"><strong>Updates to our new models:</strong> New colors, Sine Wave Controller, Improved Riding Position, Heavier-duty gold O-ring chain, Updated brakes & Pro Handlebar Grip.</p>
-
-    <div class="options-group">
-      <label for="color-select">COLOR:</label>
-      <select id="color-select">
-        <option value="">Choose an option</option>
-        <option value="green-purple">Green & Purple</option>
-        <option value="silver-orange">Silver & Orange</option>
-        <option value="black-orange">Black & Orange</option>
-        <option value="blue-orange">Blue & Orange</option>
-        <option value="all-black">All Black Edition</option>
-      </select>
-    </div>
-
-    <div class="options-group">
-      <label for="qty">SURRON LIGHT BEE X quantity:</label>
-      <input type="number" id="qty" value="1" min="1" style="width:90px;">
-    </div>
-
-    <button class="btn-add-cart" onclick="addToCart(parseInt(document.getElementById('qty').value) || 1, 'SURRON LIGHT BEE X')">Add To Cart</button>
-
-    <ul class="perks-list">
-      <li><strong>Money Back Guarantee:</strong> Return your orders within 30 days with no hassle.</li>
-      <li><strong>Cryptocurrency Discounts:</strong> Get 20% Discount OFF when you pay with crypto.</li>
-      <li><strong>Free Shipping Within USA:</strong> Wait 3-4 days for order arrival.</li>
-    </ul>
-
-    <h3 style="margin-top:30px;">Product Description</h3>
-    <p style="margin-top:8px;">The Surron Light Bee X has become a worldwide phenomenon due to its accessibility, edgy design, zero emissions, and noise-free ride.</p>
-  </div>
 </div>
 
-<!-- Storm Bee Details Modal -->
-<div class="modal-overlay" id="stormBeeModal">
-  <div class="modal-content">
-    <div class="page-nav-bar">
-      <button class="back-btn" onclick="closeModal('stormBeeModal')">← Back to Store</button>
-    </div>
-    <div class="product-details-header">
-      <h2>SURRON STORM BEE</h2>
-      <p style="color:#64748b; font-size:14px; margin-top:4px;">Be the first to leave a review.</p>
-    </div>
-    <p>Surron have once again set the new benchmark for high-performance, electric off-road motorcycles. 0-50mph comes in only 3.6 seconds due to instant motor torque.</p>
 
-    <div class="options-group">
-      <label for="storm-model-select">MODEL:</label>
-      <select id="storm-model-select">
-        <option value="">Choose an option</option>
-        <option value="off-road">Off-Road</option>
-        <option value="road-legal">Road Legal</option>
-      </select>
+
+<!-- =========================================================
+     PRODUCT MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="productModal"
+>
+
+    <div class="modal-content">
+
+        <div class="page-nav-bar">
+
+            <button
+                class="back-btn"
+                onclick="closeModal('productModal')"
+            >
+                ← Back to Store
+            </button>
+
+        </div>
+
+
+        <div id="productModalContent"></div>
+
     </div>
 
-    <div class="options-group">
-      <label for="storm-qty">SURRON STORM BEE quantity:</label>
-      <input type="number" id="storm-qty" value="1" min="1" style="width:90px;">
-    </div>
-
-    <button class="btn-add-cart" onclick="addToCart(parseInt(document.getElementById('storm-qty').value) || 1, 'SURRON STORM BEE')">Add To Cart</button>
-
-    <ul class="perks-list">
-      <li><strong>Money Back Guarantee:</strong> 30-day money-back window.</li>
-      <li><strong>Cryptocurrency Discounts:</strong> 20% OFF with crypto payment.</li>
-      <li><strong>Free Shipping:</strong> 3-4 business days delivery across USA.</li>
-    </ul>
-  </div>
 </div>
 
-<!-- Ultra Bee Details Modal -->
-<div class="modal-overlay" id="ultraBeeModal">
-  <div class="modal-content">
-    <div class="page-nav-bar">
-      <button class="back-btn" onclick="closeModal('ultraBeeModal')">← Back to Store</button>
-    </div>
-    <div class="product-details-header">
-      <h2>SURRON ULTRA BEE HP 2025</h2>
-      <p style="color:#64748b; font-size:14px; margin-top:4px;">Be the first to leave a review.</p>
-    </div>
-    <p>The 2025 Ultra Bee pushes boundaries with a massive power upgrade, redesigned suspension, and 21kW Turbo mode.</p>
 
-    <div class="options-group">
-      <label for="ultra-color-select">COLOR:</label>
-      <select id="ultra-color-select">
-        <option value="">Choose an option</option>
-        <option value="carbon-black">CARBON BLACK</option>
-        <option value="desert-brown">DESERT BROWN</option>
-      </select>
+
+<!-- =========================================================
+     CART MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="cartModal"
+>
+
+    <div class="modal-content">
+
+        <div class="page-nav-bar">
+
+            <button
+                class="back-btn"
+                onclick="closeModal('cartModal')"
+            >
+                ← Continue Shopping
+            </button>
+
+        </div>
+
+
+        <div class="product-details-header">
+
+            <h2>
+                🛒 Your Shopping Cart
+            </h2>
+
+            <p>
+                Review your selected products.
+            </p>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="cartItems"
+        ></div>
+
+
+        <div
+            class="summary-card"
+            id="cartSummary"
+        >
+
+            <div class="summary-item">
+
+                <span>
+                    Subtotal
+                </span>
+
+                <strong id="cartSubtotal">
+                    $0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-item">
+
+                <span>
+                    Shipping
+                </span>
+
+                <strong>
+                    FREE
+                </strong>
+
+            </div>
+
+
+            <div class="summary-item summary-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="cartTotal">
+                    $0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn-proceed-checkout"
+            id="checkoutBtn"
+        >
+            Proceed to Checkout →
+        </button>
+
     </div>
 
-    <div class="options-group">
-      <label for="ultra-qty">SURRON ULTRA BEE HP 2025 quantity:</label>
-      <input type="number" id="ultra-qty" value="1" min="1" style="width:90px;">
-    </div>
-
-    <button class="btn-add-cart" onclick="addToCart(parseInt(document.getElementById('ultra-qty').value) || 1, 'SURRON ULTRA BEE HP 2025')">Add To Cart</button>
-
-    <ul class="perks-list">
-      <li><strong>Money Back Guarantee:</strong> 30 days hassle-free return.</li>
-      <li><strong>Crypto Discount:</strong> 20% OFF when checking out with crypto.</li>
-    </ul>
-  </div>
 </div>
 
-<!-- Hyper Bee Details Modal -->
-<div class="modal-overlay" id="hyperBeeModal">
-  <div class="modal-content">
-    <div class="page-nav-bar">
-      <button class="back-btn" onclick="closeModal('hyperBeeModal')">← Back to Store</button>
-    </div>
-    <div class="product-details-header">
-      <h2>SURRON HYPER BEE</h2>
-      <p style="color:#64748b; font-size:14px; margin-top:4px;">Be the first to leave a review.</p>
-    </div>
-    <p>Compact youth electric dirt bike designed for aggressive thrills and mini-pit racing.</p>
 
-    <div class="options-group">
-      <label for="hyper-color-select">COLOR:</label>
-      <select id="hyper-color-select">
-        <option value="">Choose an option</option>
-        <option value="white-pink">White/Pink</option>
-        <option value="black-blue">Black/Blue</option>
-        <option value="yellow">Yellow</option>
-        <option value="black-green">Black/Green</option>
-      </select>
+
+<!-- =========================================================
+     CHECKOUT MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="checkoutModal"
+>
+
+    <div class="modal-content">
+
+        <div class="page-nav-bar">
+
+            <button
+                class="back-btn"
+                onclick="closeModal('checkoutModal')"
+            >
+                ← Back to Cart
+            </button>
+
+        </div>
+
+
+        <div class="product-details-header">
+
+            <h2>
+                Secure Checkout
+            </h2>
+
+            <p>
+                Enter your information to continue.
+            </p>
+
+        </div>
+
+
+        <form
+            class="checkout-form"
+            id="checkoutForm"
+        >
+
+            <div class="form-group">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="customerName"
+                    required
+                    placeholder="Your full name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="customerEmail"
+                    required
+                    placeholder="you@example.com"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="customerPhone"
+                    required
+                    placeholder="Phone number"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Shipping Address
+                </label>
+
+                <textarea
+                    id="customerAddress"
+                    required
+                    placeholder="Enter your shipping address"
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Payment Method
+                </label>
+
+                <select
+                    id="paymentMethod"
+                    required
+                >
+
+                    <option value="">
+                        Select payment method
+                    </option>
+
+                    <option value="card">
+                        Credit / Debit Card
+                    </option>
+
+                    <option value="paypal">
+                        PayPal
+                    </option>
+
+                    <option value="crypto">
+                        Cryptocurrency
+                    </option>
+
+                    <option value="bank">
+                        Bank Transfer
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <div class="summary-item">
+
+                    <span>
+                        Order Total
+                    </span>
+
+                    <strong id="checkoutTotal">
+                        $0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="checkout-message"
+                id="checkoutMessage"
+            >
+                Order information received.
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn-proceed-checkout"
+            >
+                Continue to Payment →
+            </button>
+
+        </form>
+
     </div>
 
-    <div class="options-group">
-      <label for="hyper-qty">SURRON HYPER BEE quantity:</label>
-      <input type="number" id="hyper-qty" value="1" min="1" style="width:90px;">
-    </div>
-
-    <button class="btn-add-cart" onclick="addToCart(parseInt(document.getElementById('hyper-qty').value) || 1, 'SURRON HYPER BEE')">Add To Cart</button>
-
-    <ul class="perks-list">
-      <li><strong>Money Back Guarantee:</strong> 30-day money-back guarantee.</li>
-      <li><strong>Crypto Discount:</strong> Save 20% paying with crypto.</li>
-    </ul>
-  </div>
 </div>
+
+
+
+<!-- =========================================================
+     PROFILE MODAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="profileModal"
+>
+
+    <div class="modal-content">
+
+        <div class="page-nav-bar">
+
+            <button
+                class="back-btn"
+                onclick="closeModal('profileModal')"
+            >
+                ← Back
+            </button>
+
+        </div>
+
+        <div class="product-details-header">
+
+            <h2>
+                👤 Customer Account
+            </h2>
+
+            <p>
+                Account features can be connected to
+                your backend later.
+            </p>
+
+        </div>
+
+        <div class="summary-card">
+
+            <h3>
+                Welcome to Bike World
+            </h3>
+
+            <p style="margin-top:10px;color:#64748b;">
+                Sign-in and account management can be
+                connected when you add your backend.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
 
 <footer>
-  <p>© 2026 Bike World. All Rights Reserved.</p>
+
+    <p>
+        © 2026 Bike World. All Rights Reserved.
+    </p>
+
 </footer>
 
+
+
 <script>
-// Modal Controls
-function openModal(modalId) {
-  const targetModal = document.getElementById(modalId);
-  if (targetModal) {
-    targetModal.style.display = 'block';
-    targetModal.scrollTop = 0;
-    document.body.style.overflow = 'hidden';
-  }
+
+/* =========================================================
+   PRODUCT DATABASE
+========================================================= */
+
+const products = {
+
+    lightBee: {
+
+        name: "Surron Light Bee X",
+
+        price: 3800,
+
+        image:
+        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/Sur-Ron-LBX-Silver-Orange-Angled.jpg",
+
+        description:
+        "High-performance lightweight electric dirt bike built for trail maneuverability.",
+
+        options: [
+
+            {
+                label:"Color",
+
+                values:[
+                    "Green & Purple",
+                    "Silver & Orange",
+                    "Black & Orange",
+                    "Blue & Orange",
+                    "All Black Edition"
+                ]
+            }
+
+        ]
+
+    },
+
+
+    stormBee: {
+
+        name:"Surron Storm Bee",
+
+        price:8500,
+
+        image:
+        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-storm-1000x1000-1.jpg",
+
+        description:
+        "Full-size electric off-road motorcycle equipped for high-performance riding.",
+
+        options:[
+
+            {
+                label:"Model",
+
+                values:[
+                    "Off-Road",
+                    "Road Legal"
+                ]
+            }
+
+        ]
+
+    },
+
+
+    ultraBee: {
+
+        name:"Surron Ultra Bee HP 2025",
+
+        price:6200,
+
+        image:
+        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/sur-ron-ultra-bee.jpg",
+
+        description:
+        "Versatile mid-sized electric off-road motorcycle featuring high-performance output.",
+
+        options:[
+
+            {
+                label:"Color",
+
+                values:[
+                    "Carbon Black",
+                    "Desert Brown"
+                ]
+            }
+
+        ]
+
+    },
+
+
+    hyperBee: {
+
+        name:"Surron Hyper Bee",
+
+        price:2400,
+
+        image:
+        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/58.webp",
+
+        description:
+        "Compact electric dirt bike designed for younger riders and mini-pit riding.",
+
+        options:[
+
+            {
+                label:"Color",
+
+                values:[
+                    "White/Pink",
+                    "Black/Blue",
+                    "Yellow",
+                    "Black/Green"
+                ]
+            }
+
+        ]
+
+    },
+
+
+    charger: {
+
+        name:"Light Bee Charger 10A",
+
+        price:250,
+
+        image:
+        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-charger-10a-157796_1178x882.webp",
+
+        description:
+        "High-efficiency charger designed for the Light Bee battery."
+
+    },
+
+
+    battery: {
+
+        name:"Lithium Battery 48V 20Ah",
+
+        price:450,
+
+        image:
+        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-s-lithium-battery-48v20ah-851993_798x798.webp",
+
+        description:
+        "High-capacity replacement battery."
+
+    },
+
+
+    wheelKit: {
+
+        name:"16/19 Wheel Rim Kit KKE",
+
+        price:400,
+
+        image:
+        "https://sur-ronusa.us.com/wp-content/uploads/2025/01/light-bee-1619-wheel-rim-kit-kke-429448_700x700.webp",
+
+        description:
+        "Heavy-duty wheel rim kit for rugged off-road use."
+
+    }
+
+};
+
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+let cart = JSON.parse(
+    localStorage.getItem("bikeWorldCart")
+) || [];
+
+
+/* =========================================================
+   SAVE CART
+========================================================= */
+
+function saveCart(){
+
+    localStorage.setItem(
+        "bikeWorldCart",
+        JSON.stringify(cart)
+    );
+
 }
 
-function closeModal(modalId) {
-  const targetModal = document.getElementById(modalId);
-  if (targetModal) {
-    targetModal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
+
+/* =========================================================
+   CART COUNT
+========================================================= */
+
+function updateCartCount(){
+
+    const count = cart.reduce(
+        (total,item) =>
+            total + item.qty,
+        0
+    );
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = count;
+
 }
 
-// Global Cart Counter Logic
-let currentCartCount = 0;
-function addToCart(qty = 1, itemName = "Item") {
-  currentCartCount += qty;
-  document.getElementById('cartCount').innerText = currentCartCount;
-  alert(`Added ${qty} x ${itemName} to your cart!`);
+
+/* =========================================================
+   ADD PRODUCT TO CART
+========================================================= */
+
+function addToCart(productId){
+
+    const product = products[productId];
+
+    if(!product) return;
+
+
+    let selectedOption = "";
+
+
+    if(product.options){
+
+        const select =
+            document.querySelector(
+                "#productModalContent select"
+            );
+
+        if(select){
+
+            selectedOption =
+                select.value;
+
+        }
+
+    }
+
+
+    const qtyInput =
+        document.querySelector(
+            "#productModalContent .quantity-input"
+        );
+
+
+    let qty =
+        parseInt(
+            qtyInput?.value || 1
+        );
+
+
+    if(isNaN(qty) || qty < 1){
+
+        qty = 1;
+
+    }
+
+
+    const existing =
+        cart.find(
+            item =>
+                item.id === productId &&
+                item.option === selectedOption
+        );
+
+
+    if(existing){
+
+        existing.qty += qty;
+
+    }else{
+
+        cart.push({
+
+            id:productId,
+
+            name:product.name,
+
+            price:product.price,
+
+            image:product.image,
+
+            option:selectedOption,
+
+            qty:qty
+
+        });
+
+    }
+
+
+    saveCart();
+
+    updateCartCount();
+
+    closeModal("productModal");
+
+    openCart();
+
 }
 
-// Mobile Hamburger Menu Toggle
-const menuToggleBtn = document.getElementById('menuToggleBtn');
-const mobileMenu = document.getElementById('mobileMenu');
 
-if (menuToggleBtn && mobileMenu) {
-  menuToggleBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-  });
+/* =========================================================
+   ADD CUSTOM ACCESSORY
+========================================================= */
+
+function addCustomItem(
+    name,
+    price,
+    image
+){
+
+    const existing =
+        cart.find(
+            item =>
+                item.name === name
+        );
+
+
+    if(existing){
+
+        existing.qty++;
+
+    }else{
+
+        cart.push({
+
+            id:"custom-" + Date.now(),
+
+            name:name,
+
+            price:price,
+
+            image:image,
+
+            option:"",
+
+            qty:1
+
+        });
+
+    }
+
+
+    saveCart();
+
+    updateCartCount();
+
+    openCart();
+
 }
 
-// Live Search Filter Logic
-const searchInput = document.getElementById('searchInput');
-const searchBtn = document.getElementById('searchBtn');
 
-function performSearch() {
-  const filter = searchInput.value.toLowerCase().trim();
-  
-  // Filter Bike Grid Cards
-  const cards = document.querySelectorAll('.grid .card');
-  cards.forEach(card => {
-    const text = card.textContent.toLowerCase();
-    card.style.display = text.includes(filter) ? '' : 'none';
-  });
+/* =========================================================
+   OPEN PRODUCT
+========================================================= */
 
-  // Filter Accessory Cards
-  const accCards = document.querySelectorAll('.accessory-card');
-  accCards.forEach(acc => {
-    const text = acc.textContent.toLowerCase();
-    acc.style.display = text.includes(filter) ? '' : 'none';
-  });
+function openProduct(productId){
+
+    const product =
+        products[productId];
+
+
+    if(!product) return;
+
+
+    let optionsHTML = "";
+
+
+    if(product.options){
+
+        product.options.forEach(
+            (option,index) => {
+
+                optionsHTML += `
+
+                    <div class="options-group">
+
+                        <label>
+                            ${option.label}
+                        </label>
+
+                        <select
+                            required
+                            id="productOption${index}"
+                        >
+
+                            <option value="">
+                                Choose an option
+                            </option>
+
+                            ${option.values.map(
+                                value => `
+                                <option value="${value}">
+                                    ${value}
+                                </option>
+                                `
+                            ).join("")}
+
+                        </select>
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+    document.getElementById(
+        "productModalContent"
+    ).innerHTML = `
+
+        <div class="product-details-header">
+
+            <h2>
+                ${product.name}
+            </h2>
+
+            <p
+                style="
+                    color:#64748b;
+                    margin-top:5px;
+                "
+            >
+                ${product.description}
+            </p>
+
+        </div>
+
+
+        <img
+            class="product-main-image"
+            src="${product.image}"
+            alt="${product.name}"
+        >
+
+
+        ${optionsHTML}
+
+
+        <div class="options-group">
+
+            <label>
+                Quantity
+            </label>
+
+            <input
+                class="quantity-input"
+                type="number"
+                min="1"
+                value="1"
+            >
+
+        </div>
+
+
+        <div
+            class="summary-card"
+        >
+
+            <div class="summary-item">
+
+                <span>
+                    Price
+                </span>
+
+                <strong>
+                    $${product.price.toLocaleString()}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="btn-add-cart"
+            onclick="addToCart('${productId}')"
+        >
+            🛒 Add To Cart
+        </button>
+
+
+        <ul class="perks-list">
+
+            <li>
+                ✓ Secure checkout
+            </li>
+
+            <li>
+                ✓ Multiple payment options
+            </li>
+
+            <li>
+                ✓ Order tracking available
+            </li>
+
+            <li class="perks-item-description">
+                <h4>Product Details & Specification:</h4>
+                ${product.description}
+            </li>
+
+        </ul>
+
+    `;
+
+
+    openModal("productModal");
+
 }
 
-if (searchInput) searchInput.addEventListener('keyup', performSearch);
-if (searchBtn) {
-  searchBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    performSearch();
-  });
+
+/* =========================================================
+   OPEN MODAL
+========================================================= */
+
+function openModal(id){
+
+    const modal =
+        document.getElementById(id);
+
+
+    if(!modal) return;
+
+
+    modal.classList.add("active");
+
+    document.body.style.overflow =
+        "hidden";
+
 }
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+function closeModal(id){
+
+    const modal =
+        document.getElementById(id);
+
+
+    if(!modal) return;
+
+
+    modal.classList.remove("active");
+
+    document.body.style.overflow =
+        "auto";
+
+}
+
+
+/* =========================================================
+   OPEN CART
+========================================================= */
+
+function openCart(){
+
+    renderCart();
+
+    openModal("cartModal");
+
+}
+
+
+/* =========================================================
+   RENDER CART
+========================================================= */
+
+function renderCart(){
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-cart">
+
+                <div class="empty-cart-icon">
+                    🛒
+                </div>
+
+                <h3>
+                    Your cart is empty
+                </h3>
+
+                <p>
+                    Add a bike or accessory
+                    to get started.
+                </p>
+
+            </div>
+
+        `;
+
+        document.getElementById(
+            "cartSubtotal"
+        ).textContent = "$0";
+
+        document.getElementById(
+            "cartTotal"
+        ).textContent = "$0";
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        cart.map(
+            (item,index) => `
+
+                <div
+                    class="cart-item"
+                >
+
+                    <img
+                        src="${item.image}"
+                        alt="${item.name}"
+                    >
+
+
+                    <div>
+
+                        <h4>
+                            ${item.name}
+                        </h4>
+
+                        ${
+                            item.option
+                            ?
+                            `<small>
+                                ${item.option}
+                            </small>`
+                            :
+                            ""
+                        }
+
+
+                        <div
+                            class="cart-controls"
+                        >
+
+                            <button
+                                class="qty-btn"
+                                onclick="changeQuantity(${index},-1)"
+                            >
+                                −
+                            </button>
+
+                            <strong>
+                                ${item.qty}
+                            </strong>
+
+                            <button
+                                class="qty-btn"
+                                onclick="changeQuantity(${index},1)"
+                            >
+                                +
+                            </button>
+
+                        </div>
+
+
+                        <button
+                            class="remove-btn"
+                            onclick="removeFromCart(${index})"
+                        >
+                            Remove
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="cart-price"
+                    >
+                        $${(
+                            item.price *
+                            item.qty
+                        ).toLocaleString()}
+                    </div>
+
+                </div>
+
+            `
+        ).join("");
+
+
+    const total =
+        cart.reduce(
+            (sum,item) =>
+                sum +
+                item.price *
+                item.qty,
+            0
+        );
+
+
+    document.getElementById(
+        "cartSubtotal"
+    ).textContent =
+        "$" +
+        total.toLocaleString();
+
+
+    document.getElementById(
+        "cartTotal"
+    ).textContent =
+        "$" +
+        total.toLocaleString();
+
+}
+
+
+/* =========================================================
+   CHANGE QUANTITY
+========================================================= */
+
+function changeQuantity(
+    index,
+    amount
+){
+
+    if(!cart[index]) return;
+
+
+    cart[index].qty += amount;
+
+
+    if(cart[index].qty <= 0){
+
+        cart.splice(index,1);
+
+    }
+
+
+    saveCart();
+
+    updateCartCount();
+
+    renderCart();
+
+}
+
+
+/* =========================================================
+   REMOVE CART ITEM
+========================================================= */
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    saveCart();
+
+    updateCartCount();
+
+    renderCart();
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function openCheckout(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Your cart is empty. Please add an item first."
+        );
+
+        return;
+
+    }
+
+
+    const total =
+        cart.reduce(
+            (sum,item) =>
+                sum +
+                item.price *
+                item.qty,
+            0
+        );
+
+
+    document.getElementById(
+        "checkoutTotal"
+    ).textContent =
+        "$" +
+        total.toLocaleString();
+
+
+    closeModal("cartModal");
+
+    openModal("checkoutModal");
+
+}
+
+
+/* =========================================================
+   CHECKOUT FORM
+========================================================= */
+
+document.getElementById(
+    "checkoutForm"
+).addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+
+        const message =
+            document.getElementById(
+                "checkoutMessage"
+            );
+
+
+        message.style.display =
+            "block";
+
+
+        message.textContent =
+            "Order information received. Your payment gateway can now be connected here.";
+
+    }
+);
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+function performSearch(){
+
+    const query =
+        document.getElementById(
+            "searchInput"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    const bikeCards =
+        document.querySelectorAll(
+            ".product-card"
+        );
+
+
+    const accessoryCards =
+        document.querySelectorAll(
+            ".accessory-card"
+        );
+
+
+    bikeCards.forEach(card => {
+
+        const text =
+            card.textContent
+            .toLowerCase();
+
+
+        card.style.display =
+            text.includes(query)
+            ? ""
+            : "none";
+
+    });
+
+
+    accessoryCards.forEach(card => {
+
+        const text =
+            card.textContent
+            .toLowerCase();
+
+
+        if(
+            card.classList.contains(
+                "extra-accessory"
+            )
+            &&
+            card.classList.contains(
+                "hidden"
+            )
+        ){
+
+            return;
+
+        }
+
+
+        card.style.display =
+            text.includes(query)
+            ? ""
+            : "none";
+
+    });
+
+}
+
+
+document.getElementById(
+    "searchInput"
+).addEventListener(
+    "input",
+    performSearch
+);
+
+
+document.getElementById(
+    "searchBtn"
+).addEventListener(
+    "click",
+    performSearch
+);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuToggle =
+    document.getElementById(
+        "menuToggleBtn"
+    );
+
+const mobileMenu =
+    document.getElementById(
+        "mobileMenu"
+    );
+
+
+menuToggle.addEventListener(
+    "click",
+    function(){
+
+        const active =
+            mobileMenu.classList.toggle(
+                "active"
+            );
+
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            active
+        );
+
+    }
+);
+
+
+/* =========================================================
+   VIEW MORE
+========================================================= */
+
+const viewMoreBtn =
+    document.getElementById(
+        "viewMoreBtn"
+    );
+
+
+viewMoreBtn.addEventListener(
+    "click",
+    function(){
+
+        const extras =
+            document.querySelectorAll(
+                ".extra-accessory"
+            );
+
+
+        const hidden =
+            extras[0].classList.contains(
+                "hidden"
+            );
+
+
+        extras.forEach(item => {
+
+            item.classList.toggle(
+                "hidden"
+            );
+
+        });
+
+
+        viewMoreBtn.textContent =
+            hidden
+            ? "View Less"
+            : "View More";
+
+    }
+);
+
+
+/* =========================================================
+   CART BUTTON
+========================================================= */
+
+document.getElementById(
+    "cartBtn"
+).addEventListener(
+    "click",
+    openCart
+);
+
+
+/* =========================================================
+   PROFILE BUTTON
+========================================================= */
+
+document.getElementById(
+    "profileBtn"
+).addEventListener(
+    "click",
+    function(){
+
+        openModal(
+            "profileModal"
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CHECKOUT BUTTON
+========================================================= */
+
+document.getElementById(
+    "checkoutBtn"
+).addEventListener(
+    "click",
+    openCheckout
+);
+
+
+/* =========================================================
+   CLOSE WHEN CLICKING OUTSIDE MODAL
+========================================================= */
+
+document.querySelectorAll(
+    ".modal-overlay"
+).forEach(modal => {
+
+    modal.addEventListener(
+        "click",
+        function(event){
+
+            if(
+                event.target === modal
+            ){
+
+                closeModal(
+                    modal.id
+                );
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape"
+        ){
+
+            document.querySelectorAll(
+                ".modal-overlay.active"
+            ).forEach(modal => {
+
+                closeModal(
+                    modal.id
+                );
+
+            });
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   CLOSE MOBILE MENU AFTER LINK CLICK
+========================================================= */
+
+document.querySelectorAll(
+    ".mobile-menu a"
+).forEach(link => {
+
+    link.addEventListener(
+        "click",
+        function(){
+
+            mobileMenu.classList.remove(
+                "active"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+updateCartCount();
+
 </script>
 
 </body>
